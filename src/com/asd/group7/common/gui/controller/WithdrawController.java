@@ -6,6 +6,10 @@
 
 package com.asd.group7.common.gui.controller;
 
+import com.asd.group7.common.gui.AccountFrm;
+import com.asd.group7.common.gui.JDialog_Dialogview;
+import com.asd.group7.common.lib.account.AccountManager;
+import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
 
 /**
@@ -14,9 +18,27 @@ import java.awt.event.ActionEvent;
  */
 public class WithdrawController implements Controller{
 
+    private AccountManager accountManager=null;
+    
+    public WithdrawController() {
+        accountManager=ClassicSingleton.getInstanceAccountManager();
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+        AccountFrm accountFrm = ClassicSingleton.getInstanceAccountFrm();
+        String accnr = accountFrm.getAccountNo();
+        JDialog_Dialogview dep = new JDialog_Dialogview(accountFrm, accnr);
+        dep.setBounds(430, 15, 275, 140);
+        dep.show();
+    }
+    
+    public WithdrawController(String accrno,String amount){
+        this();
+    }
+    
+    public void withdraw(String accrno,String amount){
+    
     }
     
 }
