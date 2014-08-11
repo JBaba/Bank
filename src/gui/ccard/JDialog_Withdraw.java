@@ -1,16 +1,17 @@
 package gui.ccard;
 import java.awt.*;
 import javax.swing.*;
+import gui.bank.*;
 
 
 
 public class JDialog_Withdraw extends javax.swing.JDialog
 {
    
-    private BankFrm parentframe;
+    private CardFrm parentframe;
     private String name;
 
-	public JDialog_Withdraw(BankFrm parent, String aname)
+	public JDialog_Withdraw(CardFrm parent, String aname)
 	{
 		super(parent);
 		parentframe=parent;
