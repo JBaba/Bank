@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author james
  */
-public class AAccount {
+public abstract class AAccount implements IAccount {
 
     private String acctNumber;
     private List<ITransaction> transactions;

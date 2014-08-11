@@ -7,6 +7,7 @@
 package com.asd.group7.common.factory;
 
 import com.asd.group7.common.account.IAccount;
+import com.asd.group7.common.party.Company;
 import com.asd.group7.common.party.IParty;
 import com.asd.group7.common.transaction.ITransaction;
 
@@ -18,7 +19,7 @@ public class CompanyFactory extends APartyFactory {
 
     @Override
     public IParty createParty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Company();
     }
 
     @Override

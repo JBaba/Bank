@@ -9,16 +9,17 @@ package com.asd.group7.common.factory;
 import com.asd.group7.common.account.IAccount;
 import com.asd.group7.common.party.IParty;
 import com.asd.group7.common.transaction.ITransaction;
+import com.asd.group7.common.transaction.Withdraw;
 
 /**
  *
  * @author james
  */
-public class DebitTransactionFactory extends ATransactionFactory {
+public class WithdrawTransactionFactory extends ATransactionFactory {
 
     @Override
     public ITransaction createTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Withdraw();
     }
 
     @Override
