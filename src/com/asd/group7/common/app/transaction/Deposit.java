@@ -12,11 +12,10 @@ import com.asd.group7.common.lib.transaction.Credit;
  *
  * @author james
  */
-public class Deposit extends Credit {
-
+public class Deposit extends Credit {  
     @Override
     public void compute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
