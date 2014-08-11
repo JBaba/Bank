@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.factory;
 
 import com.asd.group7.common.account.IAccount;
@@ -15,7 +14,10 @@ import com.asd.group7.common.transaction.ITransaction;
  * @author james
  */
 public interface IFactory {
+
     public IParty createParty();
+
     public IAccount createAccount();
+
     public ITransaction createTransaction();
 }

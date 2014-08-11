@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.factory;
 
 import com.asd.group7.common.account.DefaultAccount;
@@ -31,5 +30,5 @@ public class AccountFactory extends AAccountFactory {
     public ITransaction createTransaction() {
         return null;
     }
-    
+
 }
