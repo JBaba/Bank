@@ -18,4 +18,28 @@ public abstract class AAccount implements IAccount {
     private List<ITransaction> transactions;
     private String type;
     private double balance;
+
+    public String getAcctNumber() {
+        return acctNumber;
+    }
+
+    public void setAcctNumber(String acctNumber) {
+        this.acctNumber = acctNumber;
+    }
+
+    public List<ITransaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<ITransaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }
