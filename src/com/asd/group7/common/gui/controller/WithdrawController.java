@@ -4,19 +4,19 @@
  * and open the template in the editor.
  */
 
-package bank;
+package com.asd.group7.common.gui.controller;
+
+import java.awt.event.ActionEvent;
 
 /**
  *
  * @author naimi_000
  */
-public class Bank {
+public class WithdrawController implements Controller{
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        
     }
     
 }
