@@ -27,7 +27,7 @@ public class WithdrawDialog extends JDialog_Dialogview{
     protected void JButtonOK_actionPerformed(ActionEvent event) {
         String name=JTextField_NAME.getText();
         String amount=JTextField_Deposit.getText();
-        new WithdrawController().withdraw(accnr, amount, name);
+        new WithdrawController().withdraw(this.getAccnr(), amount, name);
     }
     
     
