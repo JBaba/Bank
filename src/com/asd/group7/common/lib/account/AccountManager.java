@@ -9,6 +9,8 @@ import com.asd.group7.common.app.type.AccountType;
 import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.lib.factory.FactoryProducer;
 import com.asd.group7.common.lib.transaction.ITransaction;
+import com.asd.group7.common.lib.transaction.TransactionManager;
+import com.asd.group7.common.singleton.ClassicSingleton;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +22,14 @@ import java.util.List;
 public class AccountManager {
 
     private List<IAccount> accountList = new ArrayList<IAccount>();
+    private TransactionManager transactionManager=null;
 
+    public AccountManager() {
+        transactionManager=ClassicSingleton.getInstanceTransactionManager();
+    }
+
+    
+    
     public void addInterest() {
 
     }
@@ -56,5 +65,18 @@ public class AccountManager {
             }
         }
         return null;
+    }
+    
+    public void addDeposit(IAccount account,ITransaction transaction){
+        performTransaction(account, transaction);
+    }
+    
+    public void addWithdraw(IAccount account,ITransaction transaction){
+        performTransaction(account, transaction);
+    }
+    
+    public void performTransaction(IAccount account,ITransaction transaction){
+        transactionManager.execute(transaction);
+        account.addEntry(transaction);
     }
 }
