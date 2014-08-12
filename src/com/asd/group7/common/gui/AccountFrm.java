@@ -22,11 +22,9 @@ import com.asd.group7.common.lib.factory.FactoryProducer;
 import com.asd.group7.common.lib.mediator.Mediator;
 import com.asd.group7.common.lib.mediator.Message;
 import com.asd.group7.common.lib.party.AParty;
-import com.asd.group7.common.lib.transaction.TransactionManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.*;
 import java.util.Iterator;
-import javax.swing.table.DefaultTableModel;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -117,6 +115,7 @@ public class AccountFrm extends ASDFrame {
         mediator.addColleague(JButton_Deposit);
         mediator.addColleague(JButton_Withdraw);
         mediator.addColleague(JButton_Addinterest);
+        mediator.addColleague(table1);
 
         JButton_Exit.addActionListener(new ExitController());
         JButton_PerAC.addActionListener(new AccountController());
@@ -154,7 +153,7 @@ public class AccountFrm extends ASDFrame {
         return model;
     }
 
-    protected void loadTableWithData() {
+    public void loadTableWithData() {
         AccountManager accountManager = ClassicSingleton.getInstanceAccountManager();
         for (Iterator<IAccount> it = accountManager.getAccountList().iterator(); it.hasNext();) {
             IAccount iAccount = it.next();

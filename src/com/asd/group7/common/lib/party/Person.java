@@ -34,12 +34,12 @@ public class Person extends AParty implements IPerson {
 
     @Override
     public void addAccount(IAccount account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.addAccount(account);
     }
 
     @Override
     public void removeAccount(IAccount account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //super.removeAccount(account);
     }
 
     @Override

@@ -39,7 +39,7 @@ public class Company extends AParty implements ICompany {
 
     @Override
     public void addAccount(IAccount account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.addAccount(account);
     }
 
     @Override
@@ -58,4 +58,5 @@ public class Company extends AParty implements ICompany {
         return type;
     }
 
+    
 }

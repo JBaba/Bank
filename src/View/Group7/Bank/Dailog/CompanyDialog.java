@@ -47,6 +47,8 @@ public class CompanyDialog extends JDialog_AddAccount {
             MyAccountType accountType=MyAccountType.SAVING;
             new AddCompanyController().createAccount(accountType, name, ct, st, str, zip, acnr, noe, em);
         }
+        dispose();
+        setVisible(false);
     }
 
 }

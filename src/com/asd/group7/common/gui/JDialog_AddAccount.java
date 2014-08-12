@@ -155,7 +155,7 @@ public class JDialog_AddAccount extends ASDDialog {
         public void actionPerformed(java.awt.event.ActionEvent event) {
             Object object = event.getSource();
             if (object == JButton_OK) {
-                JButtonOK_actionPerformed(event);
+                //JButtonOK_actionPerformed(event);
             } else if (object == JButton_Cancel) {
                 JButtonCalcel_actionPerformed(event);
             }
@@ -181,5 +181,6 @@ public class JDialog_AddAccount extends ASDDialog {
     protected void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
         //make this frame invisible if Cancel button is clicked
         dispose();
+        setVisible(false);
     }
 }

@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.gui.components.ext;
 
 import com.asd.group7.common.gui.components.asd.ASDTable;
+import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.lib.mediator.IReceiverColleague;
+import com.asd.group7.common.lib.mediator.Mediator;
 import com.asd.group7.common.lib.mediator.Message;
+import com.asd.group7.common.singleton.ClassicSingleton;
 import javax.swing.table.TableModel;
 
 /**
  *
  * @author james
  */
-public class AccountListTable extends ASDTable implements IReceiverColleague{
-    
+public class AccountListTable extends ASDTable implements IReceiverColleague {
+
     private static final String NAME = "ACCOUNT_LIST_TABLE";
 
     public AccountListTable(TableModel dm) {
@@ -25,7 +27,9 @@ public class AccountListTable extends ASDTable implements IReceiverColleague{
 
     @Override
     public void receive(Message message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (message.getAbout().equalsIgnoreCase(AccountManager.UPDATE_ACCOUNT_TABLE)) {
+            ClassicSingleton.getInstanceAccountFrm().loadTableWithData();
+        }
     }
 
     @Override

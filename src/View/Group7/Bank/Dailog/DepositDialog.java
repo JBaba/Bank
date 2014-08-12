@@ -27,6 +27,8 @@ public class DepositDialog extends JDialog_Dialogview{
         String name=JTextField_NAME.getText();
         String amount=JTextField_Deposit.getText();
         new DepositController().deposit(this.getAccnr(), amount, name);
+        dispose();
+        setVisible(false);
     }
     
     
