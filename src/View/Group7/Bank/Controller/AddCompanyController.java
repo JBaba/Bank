@@ -18,6 +18,7 @@ import com.asd.group7.common.gui.JDialog_AddAccount;
 import com.asd.group7.common.gui.controller.AccountController;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.party.Company;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
@@ -45,7 +46,17 @@ public class AddCompanyController extends AccountController{
             ,String acnr,String noe,String em){
         IAccount account=FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
         IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.COMPANY);
+        Company c=(Company)party;
+        c.setName(name);
+        c.setCity(ct);
+        c.setState(st);
+        c.setStreet(str);
+        c.setZip(zip);
+        c.setNoOfEmployee(Integer.parseInt(noe));
+        c.setEmail(em);
+        party=c;
         party.addAccount(account);
+        ClassicSingleton.getInstanceAccountManager().addAccountToList(account);
     }
     
     

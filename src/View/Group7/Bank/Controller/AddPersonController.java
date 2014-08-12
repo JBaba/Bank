@@ -16,9 +16,12 @@ import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.controller.AccountController;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.party.Company;
 import com.asd.group7.common.lib.party.IParty;
+import com.asd.group7.common.lib.party.Person;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
+import java.util.Date;
 
 /**
  *
@@ -43,6 +46,18 @@ public class AddPersonController extends AccountController{
             ,String acnr,String bd,String em){
         IAccount account=FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
         IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.PERSONAL);
+        
+        Person c=(Person)party;
+        c.setName(name);
+        c.setCity(ct);
+        c.setState(st);
+        c.setStreet(str);
+        c.setZip(zip);
+        c.setDateOfBirth(new Date(bd));
+        c.setEmail(em);
+        party=c;
         party.addAccount(account);
+        ClassicSingleton.getInstanceAccountManager().addAccountToList(account);
+        
     }
 }
