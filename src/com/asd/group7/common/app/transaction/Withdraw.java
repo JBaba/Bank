@@ -18,7 +18,8 @@ public class Withdraw extends Debit {
     private IAccount account;
     @Override
     public void compute() {
-        account.addBalance(this.getAmount());        
+        this.name = "Withdraw";
+        account.deductBalance(this.amount);        
         ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);        
     }
 
@@ -26,6 +27,5 @@ public class Withdraw extends Debit {
     public void addAccount(IAccount account) {
         this.account = account;      
     }
-    
     
 }
