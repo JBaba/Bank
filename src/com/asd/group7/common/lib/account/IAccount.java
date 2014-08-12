@@ -7,6 +7,7 @@ package com.asd.group7.common.lib.account;
 
 import com.asd.group7.common.lib.functor.Functor;
 import com.asd.group7.common.lib.functor.Predicate;
+import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
 
 /**
@@ -29,4 +30,7 @@ public interface IAccount {
     
     public void updateAmountByTransaction(ITransaction transaction);
 
+    public void setParty(IParty iParty);
+    
+    public IParty getParty();
 }

@@ -7,6 +7,7 @@
 package View.Group7.Bank.Account;
 
 import com.asd.group7.common.lib.account.AAccount;
+import com.asd.group7.common.lib.party.IParty;
 
 /**
  *
@@ -24,5 +25,13 @@ public class CheckingAccount extends AAccount{
         return 3;
     }
     
-    
+    @Override
+    public void setParty(IParty iParty) {
+        super.setParty(iParty);
+    }
+
+    @Override
+    public IParty getParty() {
+        return super.getParty();
+    }
 }

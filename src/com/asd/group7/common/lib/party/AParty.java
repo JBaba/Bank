@@ -76,6 +76,7 @@ public abstract class AParty implements IParty {
 
     public void addAccount(IAccount account) {
         this.accountList.add(account);
+        account.setParty(this);
     }
 
    
