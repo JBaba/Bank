@@ -37,7 +37,7 @@ public class AccountManager implements ISenderColleague {
         transactionManager = ClassicSingleton.getInstanceTransactionManager();
         this.mediator = mediator;
         this.send(new Message(ACCOUNT_LIST_NOT_EMPTY, false));
-        this.send(new Message(ACCOUNT_SELECTED), false);
+        this.send(new Message(ACCOUNT_SELECTED, false));
     }
 
     public void addInterest() {
