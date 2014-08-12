@@ -8,6 +8,7 @@ package com.asd.group7.common.gui.controller;
 
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.JDialog_AddAccount;
+import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
 
@@ -17,6 +18,12 @@ import java.awt.event.ActionEvent;
  */
 public class AccountController implements Controller{
 
+    private AccountManager accountManager=null;
+    
+    public AccountController() {
+        accountManager=ClassicSingleton.getInstanceAccountManager();
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         //get Singlton variable and pass to dailog
