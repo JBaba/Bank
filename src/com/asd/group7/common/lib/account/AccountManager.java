@@ -5,9 +5,12 @@
  */
 package com.asd.group7.common.lib.account;
 
-import com.asd.group7.common.lib.party.IParty;
+import com.asd.group7.common.app.type.AccountType;
+import com.asd.group7.common.app.type.Types;
+import com.asd.group7.common.lib.factory.FactoryProducer;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,16 +25,36 @@ public class AccountManager {
 
     }
 
-    public void createAccount(IParty party) {
-
+    public IAccount createAccount(AccountType accountType) {
+        IAccount account = FactoryProducer.getFactory(Types.PARTY).getAccount(accountType);
+        addAccountToList(account);
+        return account;
     }
 
     public void removeAccount(IAccount account) {
+        this.getAccountList().remove(account);
+    }
 
+    public List<IAccount> getAccountList() {
+        return accountList;
+    }
+
+    public void addAccountToList(IAccount account) {
+        this.accountList.add(account);
     }
     
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
         // TODO: update colleagues
+    }
+    
+    public IAccount getAccountById(String accountId) {
+        for (Iterator<IAccount> it = accountList.iterator(); it.hasNext();) {
+            IAccount iAccount = it.next();
+            if(iAccount.getAccountNumber().equalsIgnoreCase(accountId)) {
+                return iAccount;
+            }
+        }
+        return null;
     }
 }

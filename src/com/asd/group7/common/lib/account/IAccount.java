@@ -22,4 +22,10 @@ public interface IAccount {
     public void notifyCustomer(Functor f, Predicate p);
 
     public String getType();
+    
+    public void addBalance(double amount);
+    
+    public void deductBalance(double amount);
+    
+    public String getAccountNumber();
 }
