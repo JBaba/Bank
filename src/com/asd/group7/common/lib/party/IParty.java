@@ -6,8 +6,8 @@
 package com.asd.group7.common.lib.party;
 
 import com.asd.group7.common.lib.account.IAccount;
-import com.asd.group7.common.lib.functor.Functor;
-import com.asd.group7.common.lib.functor.Predicate;
+import com.asd.group7.common.lib.functor.IFunctor;
+import com.asd.group7.common.lib.functor.IPredicate;
 
 /**
  *
@@ -19,7 +19,7 @@ public interface IParty {
 
     public void removeAccount(IAccount account);
 
-    public void sendEmail(Functor f, Predicate p);
+    public void sendEmail(IFunctor f, IPredicate p);
 
     public String getType();
 }

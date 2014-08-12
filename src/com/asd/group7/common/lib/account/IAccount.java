@@ -5,8 +5,8 @@
  */
 package com.asd.group7.common.lib.account;
 
-import com.asd.group7.common.lib.functor.Functor;
-import com.asd.group7.common.lib.functor.Predicate;
+import com.asd.group7.common.lib.functor.IFunctor;
+import com.asd.group7.common.lib.functor.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
 
@@ -20,7 +20,7 @@ public interface IAccount {
 
     public double getCurrentBalance();
 
-    public void notifyCustomer(Functor f, Predicate p);
+    public void notifyCustomer(IFunctor f, IPredicate p);
 
     public String getType();
 
