@@ -21,8 +21,7 @@ public class Withdraw extends Debit {
 
     @Override
     public void compute() {
-        this.setName(WITHDRAW);
-        ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);
+        ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(super.getAccount(), this);
     }
 
     @Override

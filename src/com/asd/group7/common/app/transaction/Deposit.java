@@ -22,8 +22,7 @@ public class Deposit extends Credit {
 
     @Override
     public void compute() {
-        this.setName(DEPOSIT);
-        ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);
+        ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(super.getAccount(), this);
     }
 
     @Override
