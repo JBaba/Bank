@@ -49,6 +49,7 @@ public class CompanyDialog extends JDialog_AddAccount {
         }
         dispose();
         setVisible(false);
+        
     }
 
 }

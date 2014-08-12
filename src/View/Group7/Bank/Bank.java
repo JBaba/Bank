@@ -15,6 +15,7 @@ import com.asd.group7.common.lib.factory.FactoryProducer;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Bank extends AccountFrm {
     static {
         FactoryProducer.addAbstractFactory(MyAccountType.MYAC, new MyAccountFactory());
     }
-    
+
     public Bank() {
         setTitle("Bank Application");
 
@@ -39,6 +40,12 @@ public class Bank extends AccountFrm {
 
         JButton_CompAC.addActionListener(new AddCompanyController());
         JButton_PerAC.addActionListener(new AddPersonController());
+    }
+
+    @Override
+    public void loadTableWithData() {
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
+        model.addRow(rowdata);
     }
 
     static public void main(String args[]) {

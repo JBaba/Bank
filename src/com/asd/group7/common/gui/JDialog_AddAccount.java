@@ -155,7 +155,7 @@ public class JDialog_AddAccount extends ASDDialog {
         public void actionPerformed(java.awt.event.ActionEvent event) {
             Object object = event.getSource();
             if (object == JButton_OK) {
-                //JButtonOK_actionPerformed(event);
+                JButtonOK_actionPerformed(event);
             } else if (object == JButton_Cancel) {
                 JButtonCalcel_actionPerformed(event);
             }
@@ -163,18 +163,18 @@ public class JDialog_AddAccount extends ASDDialog {
     }
 
     protected void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-        parentframe.accountnr = JTextField_ACNR.getText();
-        parentframe.clientName = JTextField_NAME.getText();
-        parentframe.street = JTextField_STR.getText();
-        parentframe.city = JTextField_CT.getText();
-        parentframe.zip = JTextField_ZIP.getText();
-        parentframe.state = JTextField_ST.getText();
-        if (JRadioButton_Chk.isSelected()) {
-            parentframe.accountType = "Ch";
-        } else {
-            parentframe.accountType = "S";
-        }
-        parentframe.newaccount = true;
+//        parentframe.accountnr = JTextField_ACNR.getText();
+//        parentframe.clientName = JTextField_NAME.getText();
+//        parentframe.street = JTextField_STR.getText();
+//        parentframe.city = JTextField_CT.getText();
+//        parentframe.zip = JTextField_ZIP.getText();
+//        parentframe.state = JTextField_ST.getText();
+//        if (JRadioButton_Chk.isSelected()) {
+//            parentframe.accountType = "Ch";
+//        } else {
+//            parentframe.accountType = "S";
+//        }
+//        parentframe.newaccount = true;
         dispose();
     }
 

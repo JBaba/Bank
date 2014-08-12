@@ -17,6 +17,7 @@ public class ASDTable extends JTable {
 
     public ASDTable(TableModel dm) {
         super(dm);
+        setModel(dm);
     }
     
 }

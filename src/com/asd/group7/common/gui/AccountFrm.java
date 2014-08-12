@@ -44,14 +44,14 @@ public class AccountFrm extends ASDFrame {
      */
     public String accountnr, clientName, street, city, zip, state, accountType, clientType, amountDeposit;
     public boolean newaccount;
-    private AccountEntryDataModel model;
-    private AccountListTable table1;
-    private ASDScrollPane scrollPane1;
+    protected static AccountEntryDataModel model;
+    protected static AccountListTable table1;
+    protected ASDScrollPane scrollPane1;
 
     AccountFrm myframe = null;
 
-    private Object rowdata[];
-    
+    protected Object rowdata[];
+
     private Mediator mediator;
 
     public AccountFrm() {
@@ -77,7 +77,7 @@ public class AccountFrm extends ASDFrame {
         scrollPane1 = new ASDScrollPane();
         model = setTableModel();
         table1 = new AccountListTable(model);
-
+        //model=table1
         rowdata = new Object[8];
         newaccount = false;
 
@@ -85,7 +85,8 @@ public class AccountFrm extends ASDFrame {
         scrollPane1.setBounds(12, 92, 444, 160);
         scrollPane1.getViewport().add(table1);
         table1.setBounds(0, 0, 420, 0);
-//        rowdata = new Object[8];
+
+        rowdata = new Object[8];
 
         JButton_PerAC.setText("Add personal account");
         JPanel1.add(JButton_PerAC);
@@ -111,7 +112,7 @@ public class AccountFrm extends ASDFrame {
 
         SymWindow aSymWindow = new SymWindow();
         this.addWindowListener(aSymWindow);
-    
+
         mediator.addColleague(JButton_Deposit);
         mediator.addColleague(JButton_Withdraw);
         mediator.addColleague(JButton_Addinterest);
@@ -128,11 +129,19 @@ public class AccountFrm extends ASDFrame {
 
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if(e.getValueIsAdjusting())
+                if (e.getValueIsAdjusting()) {
                     return;
-                model.send(new Message(AccountManager.ACCOUNT_SELECTED, true));
-            }           
+                }
+                try {
+                    model.send(new Message(AccountManager.ACCOUNT_SELECTED, true));
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
+            }
         });
+
+        model = (AccountEntryDataModel) table1.getModel();
+        model.addRow(rowdata);
     }
 
     /**
@@ -155,17 +164,32 @@ public class AccountFrm extends ASDFrame {
 
     public void loadTableWithData() {
         AccountManager accountManager = ClassicSingleton.getInstanceAccountManager();
+        model = (AccountEntryDataModel) table1.getModel();
         for (Iterator<IAccount> it = accountManager.getAccountList().iterator(); it.hasNext();) {
             IAccount iAccount = it.next();
             rowdata = new Object[8];
             rowdata[0] = iAccount.getAccountNumber();
-            AParty aParty=(AParty)iAccount.getParty();
+            AParty aParty = (AParty) iAccount.getParty();
             rowdata[1] = aParty.getName();
             rowdata[2] = aParty.getCity();
             rowdata[3] = aParty.getType();
             rowdata[4] = iAccount.getType();
             rowdata[5] = iAccount.getCurrentBalance();
+            SwingUtilities.invokeLater(new Runnable() {
+
+                @Override
+                public void run() {
+                    model.addRow(rowdata);
+                }
+            });
+            model.addRow(rowdata);
         }
+        //model.addRow(rowdata);
+        model.fireTableDataChanged();
+        table1.repaint();
+        System.out.println("Row in table:" + table1.getRowCount());
+        System.out.println("Row in model:" + model.getRowCount());
+
     }
 
     public String getAccountNo() {
