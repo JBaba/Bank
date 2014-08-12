@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.asd.group7.common.gui.controller;
+package View.Group7.Bank.Controller;
 
+import View.Group7.Bank.Dailog.CompanyDialog;
+import View.Group7.Bank.Dailog.PersonDialog;
 import com.asd.group7.common.gui.AccountFrm;
-import com.asd.group7.common.gui.JDialog_AddAccount;
-import com.asd.group7.common.lib.account.AccountManager;
+import com.asd.group7.common.gui.controller.AccountController;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
 
@@ -16,22 +17,20 @@ import java.awt.event.ActionEvent;
  *
  * @author naimi_000
  */
-public class AccountController implements Controller{
+public class AddPersonController extends AccountController{
 
-    protected AccountManager accountManager=null;
-    
-    public AccountController() {
-        accountManager=ClassicSingleton.getInstanceAccountManager();
+    public AddPersonController() {
+        super();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        //get Singlton variable and pass to dailog
+        System.out.println("I am a Person");
         AccountFrm accountFrm=ClassicSingleton.getInstanceAccountFrm();
-        JDialog_AddAccount pac = new JDialog_AddAccount(accountFrm);
+        PersonDialog pac = new PersonDialog(accountFrm);
         pac.setBounds(450, 20, 300, 330);
         pac.show();
-        
     }
+    
     
 }
