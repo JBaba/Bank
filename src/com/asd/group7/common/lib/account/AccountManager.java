@@ -5,14 +5,10 @@
  */
 package com.asd.group7.common.lib.account;
 
-import com.asd.group7.common.app.factory.TransactionFactory;
 import com.asd.group7.common.app.transaction.Deposit;
-import com.asd.group7.common.app.type.AccountType;
 import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.lib.factory.FactoryProducer;
-import com.asd.group7.common.lib.transaction.Credit;
-import com.asd.group7.common.lib.transaction.Debit;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import com.asd.group7.common.lib.transaction.TransactionManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
@@ -27,14 +23,14 @@ import java.util.List;
 public class AccountManager {
 
     private List<IAccount> accountList = new ArrayList<IAccount>();
-    private TransactionManager transactionManager=null;
+    private TransactionManager transactionManager = null;
 
     public AccountManager() {
-        transactionManager=ClassicSingleton.getInstanceTransactionManager();
+        transactionManager = ClassicSingleton.getInstanceTransactionManager();
     }
 
     public void addInterest() {
-        for(IAccount account: this.getAccountList()) {
+        for (IAccount account : this.getAccountList()) {
             double interestAmount = account.getInterestAmount();
             ITransaction deposit = FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
             deposit.setAccount(account);
@@ -55,32 +51,32 @@ public class AccountManager {
     public void addAccountToList(IAccount account) {
         this.accountList.add(account);
     }
-    
+
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
         account.updateAmountByTransaction(transaction);
         // TODO: update colleagues
     }
-    
+
     public IAccount getAccountById(String accountId) {
         for (Iterator<IAccount> it = accountList.iterator(); it.hasNext();) {
             IAccount iAccount = it.next();
-            if(iAccount.getAccountNumber().equalsIgnoreCase(accountId)) {
+            if (iAccount.getAccountNumber().equalsIgnoreCase(accountId)) {
                 return iAccount;
             }
         }
         return null;
     }
-    
-    public void addDeposit(IAccount account,ITransaction transaction){
+
+    public void addDeposit(IAccount account, ITransaction transaction) {
         performTransaction(account, transaction);
     }
-    
-    public void addWithdraw(IAccount account,ITransaction transaction){
+
+    public void addWithdraw(IAccount account, ITransaction transaction) {
         performTransaction(account, transaction);
     }
-    
-    public void performTransaction(IAccount account,ITransaction transaction){
+
+    public void performTransaction(IAccount account, ITransaction transaction) {
         transactionManager.execute(transaction);
     }
 }
