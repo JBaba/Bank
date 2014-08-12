@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.asd.group7.common.lib.functor;
+package com.asd.group7.common.app.iterator;
 
+import com.asd.group7.common.lib.predicate.IPredicate;
 import java.util.*;
 import java.util.List;
 

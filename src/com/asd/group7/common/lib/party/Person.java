@@ -7,7 +7,7 @@ package com.asd.group7.common.lib.party;
 
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.functor.IFunctor;
-import com.asd.group7.common.lib.functor.IPredicate;
+import com.asd.group7.common.lib.predicate.IPredicate;
 import java.util.Date;
 
 /**
@@ -18,6 +18,9 @@ public class Person extends AParty implements IPerson {
 
     private Date dateOfBirth;
     private final String type = "P";
+    
+    private IPredicate predicate;
+    private IFunctor functor;
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -38,12 +41,28 @@ public class Person extends AParty implements IPerson {
     }
 
     @Override
-    public void sendEmail(IFunctor f, IPredicate p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void sendEmail(double amount) {
+        if(predicate!=null) {
+            if(predicate.check(amount))
+                functor.compute();
+        }
+        else
+            functor.compute();
     }
 
     @Override
     public String getType() {
         return type;
     }
+    
+    public void setPredicate(IPredicate p){
+        
+        this.predicate = p;
+    }
+    
+    public void setFunctor(IFunctor f){
+        
+        this.functor = f;
+    }
+
 }
