@@ -24,7 +24,7 @@ public class Withdraw extends Debit {
     }
 
     @Override
-    public void addAccount(IAccount account) {
+    public void setAccount(IAccount account) {
         this.account = account;      
     }
     
