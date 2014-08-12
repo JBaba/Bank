@@ -20,6 +20,7 @@ public class Deposit extends Credit {
     public void compute() {
         this.setName("Deposit");
         account.addBalance(this.getAmount()); 
+        account.addEntry(this);
         ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);
     }
 
