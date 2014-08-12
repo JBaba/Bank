@@ -48,6 +48,8 @@ public class PersonDialog extends JDialog_AddAccount{
             MyAccountType accountType=MyAccountType.SAVING;
             new AddPersonController().createAccount(accountType, name, ct, st, str, zip, acnr, bd, em);
         }
+        dispose();
+        setVisible(false);
     }
     
     

@@ -27,7 +27,7 @@ public class Mediator implements IMediator {
 
     @Override
     public void send(IColleague colleague, Message message) {
-        System.out.println("Message by " + colleague.getName() + ": " + message.getAbout() + "/" + message.isStatus());
+        System.out.println(colleague.getName().toUpperCase() + " : " + message.getAbout().toUpperCase() + " : " + message.isStatus());
         for (IColleague c : colleagueList) {
             if (c != colleagueList) {
                 if (c instanceof IReceiverColleague) {

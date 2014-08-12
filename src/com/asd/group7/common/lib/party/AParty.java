@@ -6,6 +6,8 @@
 package com.asd.group7.common.lib.party;
 
 import com.asd.group7.common.lib.account.IAccount;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +24,12 @@ public abstract class AParty implements IParty {
     private String email;
     private List<IAccount> accountList;
 
+    public AParty() {
+        accountList=new ArrayList<>();
+    }
+
+    
+    
     public String getName() {
         return name;
     }
@@ -74,6 +82,7 @@ public abstract class AParty implements IParty {
         return accountList;
     }
 
+    @Override
     public void addAccount(IAccount account) {
         this.accountList.add(account);
         account.setParty(this);

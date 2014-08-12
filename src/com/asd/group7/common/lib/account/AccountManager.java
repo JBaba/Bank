@@ -28,6 +28,7 @@ public class AccountManager implements ISenderColleague {
     private static final String NAME = "ACCOUNT_MANAGER";
     public static final String ACCOUNT_SELECTED = "ACCOUNT_SELECTED";
     public static final String ACCOUNT_LIST_NOT_EMPTY = "ACCOUNT_LIST_NOT_EMPTY";
+    public static final String UPDATE_ACCOUNT_TABLE = "UPDATE_ACCOUNT_TABLE";
     
     private List<IAccount> accountList = new ArrayList<IAccount>();
     private TransactionManager transactionManager = null;
@@ -49,11 +50,13 @@ public class AccountManager implements ISenderColleague {
             deposit.setAmount(interestAmount);
             transactionManager.execute(deposit);
         }
+        this.updateAccountTable();
     }
 
     public void removeAccount(IAccount account) {
         this.getAccountList().remove(account);
         this.send(new Message(ACCOUNT_LIST_NOT_EMPTY, this.getAccountList().size()>0));
+        this.updateAccountTable();
     }
 
     public List<IAccount> getAccountList() {
@@ -63,13 +66,14 @@ public class AccountManager implements ISenderColleague {
     public void addAccountToList(IAccount account) {
         this.accountList.add(account);
         this.send(new Message(ACCOUNT_LIST_NOT_EMPTY, true));
+        this.updateAccountTable();
     }
 
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
         account.updateAmountByTransaction(transaction);
         account.getParty().sendEmail(transaction.getAmount());
-        // TODO: update colleagues
+        this.updateAccountTable();
     }
 
     public IAccount getAccountById(String accountId) {
@@ -114,5 +118,9 @@ public class AccountManager implements ISenderColleague {
     @Override
     public String getName() {
         return NAME;
+    }
+    
+    public void updateAccountTable() {
+        this.send(new Message(UPDATE_ACCOUNT_TABLE, true));
     }
 }
