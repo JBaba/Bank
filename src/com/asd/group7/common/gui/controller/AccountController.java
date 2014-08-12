@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
  */
 public class AccountController implements Controller{
 
-    protected AccountManager accountManager=null;
+    private AccountManager accountManager=null;
     
     public AccountController() {
         accountManager=ClassicSingleton.getInstanceAccountManager();
