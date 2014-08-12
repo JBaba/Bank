@@ -17,6 +17,8 @@ public interface ITransaction {
 
     public void setAccount(IAccount account);
 
+    public IAccount getAccount();
+    
     public void setAmount(double amount);
 
     public double getAmount();
