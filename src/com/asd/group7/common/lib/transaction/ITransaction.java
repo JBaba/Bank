@@ -19,5 +19,9 @@ public interface ITransaction {
 
     public void setAmount(double amount);
 
+    public double getAmount();
+
     public void setName(String name);
+    
+    public double getSignedAmount();
 }
