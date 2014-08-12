@@ -24,4 +24,6 @@ public interface IAccount {
     public String getType();
     
     public void addBalance(double amount);
+    
+    public void deductBalance(double amount);
 }
