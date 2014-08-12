@@ -12,7 +12,6 @@ import View.Group7.Bank.Type.MyAccountType;
 import com.asd.group7.common.app.factory.AccountFactory;
 import com.asd.group7.common.app.type.AccountType;
 import com.asd.group7.common.lib.account.IAccount;
-import com.asd.group7.common.lib.factory.FactoryProducer;
 
 /**
  *
@@ -20,10 +19,9 @@ import com.asd.group7.common.lib.factory.FactoryProducer;
  */
 public class MyAccountFactory extends AccountFactory{
 
-  
+     
     
     public MyAccountFactory() {
-        
     }
 
     @Override
