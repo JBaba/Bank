@@ -6,39 +6,28 @@
 
 package com.asd.group7.common.gui.controller;
 
-import com.asd.group7.common.gui.AccountFrm;
-import com.asd.group7.common.gui.JDialog_Dialogview;
 import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author naimi_000
  */
-public class WithdrawController implements Controller{
+public class InterestController implements Controller{
 
     private AccountManager accountManager=null;
     
-    public WithdrawController() {
+    public InterestController() {
         accountManager=ClassicSingleton.getInstanceAccountManager();
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
-        AccountFrm accountFrm = ClassicSingleton.getInstanceAccountFrm();
-        String accnr = accountFrm.getAccountNo();
-        JDialog_Dialogview dep = new JDialog_Dialogview(accountFrm, accnr);
-        dep.setBounds(430, 15, 275, 140);
-        dep.show();
+        accountManager.addInterest();
+        JOptionPane.showMessageDialog(ClassicSingleton.getInstanceAccountFrm(), "Add interest to all accounts", "Add interest to all accounts", JOptionPane.WARNING_MESSAGE);
     }
     
-    public WithdrawController(String accrno,String amount){
-        this();
-    }
-    
-    public void withdraw(String accrno,String amount){
-    
-    }
     
 }
