@@ -5,6 +5,7 @@ import com.asd.group7.common.gui.controller.DepositController;
 import com.asd.group7.common.gui.controller.ExitController;
 import com.asd.group7.common.gui.controller.InterestController;
 import com.asd.group7.common.gui.controller.WithdrawController;
+import com.asd.group7.common.lib.factory.FactoryProducer;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import gui.bank.*;
 import java.awt.*;
@@ -19,6 +20,9 @@ import javax.swing.*;
  */
 public class AccountFrm extends javax.swing.JFrame {
 
+    static {
+        new FactoryProducer();
+    }
     /**
      * **
      * init variables in the object **

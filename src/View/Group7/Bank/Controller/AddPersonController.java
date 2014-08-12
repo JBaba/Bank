@@ -41,7 +41,8 @@ public class AddPersonController extends AccountController{
     
     public void createAccount(MyAccountType accountType,String name,String ct,String st,String str,String zip
             ,String acnr,String bd,String em){
-        IAccount account=new MyAccountFactory().getAccount(accountType);
+        //IAccount account=new MyAccountFactory().getAccount(accountType);
+        IAccount account=FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
         IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.PERSONAL);
         
     }

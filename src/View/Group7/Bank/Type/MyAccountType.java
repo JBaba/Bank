@@ -12,5 +12,6 @@ package View.Group7.Bank.Type;
  */
 public enum MyAccountType {
     SAVING,
-    CHECKING
+    CHECKING,
+    MYAC
 }
