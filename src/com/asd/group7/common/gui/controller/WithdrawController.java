@@ -46,6 +46,7 @@ public class WithdrawController implements Controller{
         try{
             IAccount account=accountManager.getAccountById(accrno);
             ITransaction iTransaction=FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.WITHDRAW);
+            accountManager.addTransactionToAccount(account, iTransaction);
         }catch(Exception e){
             e.printStackTrace();
         }
