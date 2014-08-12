@@ -5,6 +5,8 @@
  */
 package com.asd.group7.common.lib.account;
 
+import com.asd.group7.common.app.functors.NegativeBalanceFunctor;
+import com.asd.group7.common.app.predicates.NegativeBalancePredicate;
 import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
@@ -21,8 +23,9 @@ public abstract class AAccount implements IAccount {
     private String acctNumber;
     private List<ITransaction> transactions;
     private double balance;
-    private IParty iParty;
-
+    private IParty iParty;    
+    IPredicate<Double> negativeBalanceNotifierPredicate;
+    
     public String getAcctNumber() {
         return acctNumber;
     }
@@ -49,9 +52,11 @@ public abstract class AAccount implements IAccount {
         return this.balance;
     }
 
+    //send email if balance is negative
     @Override
     public void notifyCustomer(IFunctor f, IPredicate p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(p.check(this.getCurrentBalance()))
+            f.compute();
     }
 
     @Override
@@ -61,6 +66,10 @@ public abstract class AAccount implements IAccount {
     
     public void updateAmountByTransaction(ITransaction transaction){
         this.balance += transaction.getSignedAmount();
+        
+        //check if balance is negative
+        negativeBalanceNotifierPredicate = new NegativeBalancePredicate();        
+        this.notifyCustomer(new NegativeBalanceFunctor(iParty), negativeBalanceNotifierPredicate);
     }
 
     @Override

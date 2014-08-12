@@ -20,6 +20,8 @@ public interface IParty {
     public void removeAccount(IAccount account);
 
     public void sendEmail(double amount);
+    
+    public void sendNegativeBalanceEmail();
 
     public String getType();
     
