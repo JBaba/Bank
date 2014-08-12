@@ -33,4 +33,6 @@ public interface IAccount {
     public void setParty(IParty iParty);
     
     public IParty getParty();
+    
+    public StringBuilder generateReport();
 }
