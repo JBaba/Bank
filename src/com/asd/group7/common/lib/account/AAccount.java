@@ -5,6 +5,8 @@
  */
 package com.asd.group7.common.lib.account;
 
+import com.asd.group7.common.lib.functor.Functor;
+import com.asd.group7.common.lib.functor.Predicate;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import java.util.List;
 
@@ -41,5 +43,35 @@ public abstract class AAccount implements IAccount {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    @Override
+    public void addEntry(ITransaction transaction) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public double getCurrentBalance() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void notifyCustomer(Functor f, Predicate p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addBalance(double amount) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deductBalance(double amount) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getAccountNumber() {
+        return this.getAccountNumber();
     }
 }
