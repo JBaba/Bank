@@ -16,4 +16,8 @@ public interface ITransaction {
     public void compute();
 
     public void setAccount(IAccount account);
+
+    public void setAmount(double amount);
+
+    public void setName(String name);
 }

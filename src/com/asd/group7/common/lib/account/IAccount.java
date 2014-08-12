@@ -28,4 +28,7 @@ public interface IAccount {
     public void deductBalance(double amount);
     
     public String getAccountNumber();
+    
+    public double getInterestAmount();
+
 }

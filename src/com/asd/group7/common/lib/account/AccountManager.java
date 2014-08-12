@@ -5,7 +5,10 @@
  */
 package com.asd.group7.common.lib.account;
 
+import com.asd.group7.common.app.factory.TransactionFactory;
+import com.asd.group7.common.app.transaction.Deposit;
 import com.asd.group7.common.app.type.AccountType;
+import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.lib.factory.FactoryProducer;
 import com.asd.group7.common.lib.transaction.ITransaction;
@@ -28,10 +31,15 @@ public class AccountManager {
         transactionManager=ClassicSingleton.getInstanceTransactionManager();
     }
 
-    
-    
     public void addInterest() {
-
+        for(IAccount account: this.getAccountList()) {
+            double interestAmount = account.getInterestAmount();
+            ITransaction deposit = FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
+            deposit.setAccount(account);
+            deposit.setName(Deposit.DEPOSIT_INTEREST);
+            deposit.setAmount(interestAmount);
+            transactionManager.execute(deposit);
+        }
     }
 
     public IAccount createAccount(AccountType accountType) {

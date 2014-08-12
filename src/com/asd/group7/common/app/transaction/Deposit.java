@@ -14,13 +14,14 @@ import com.asd.group7.common.singleton.ClassicSingleton;
  * @author james
  */
 public class Deposit extends Credit {
+    
+    public static final String DEPOSIT_INTEREST = "INTEREST";
 
     private IAccount account;
     @Override
     public void compute() {
-        this.setName("Deposit");
+        this.setName(DEPOSIT_INTEREST);
         account.addBalance(this.getAmount()); 
-        account.addEntry(this);
         ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);
     }
 

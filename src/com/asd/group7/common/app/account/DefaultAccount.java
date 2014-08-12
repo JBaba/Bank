@@ -17,4 +17,9 @@ public class DefaultAccount extends AAccount {
     public String getType() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public double getInterestAmount() {
+        return 0;
+    }
 }
