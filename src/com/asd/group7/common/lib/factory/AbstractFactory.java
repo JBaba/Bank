@@ -18,9 +18,9 @@ import com.asd.group7.common.lib.transaction.ITransaction;
  */
 public abstract class AbstractFactory {
 
-    public abstract IParty getParty(PartyType type);
+    public abstract IParty getParty(Enum type);
 
-    public abstract IAccount getAccount(AccountType type);
+    public abstract IAccount getAccount(Enum type);
 
-    public abstract ITransaction getTransaction(TransactionType type);
+    public abstract ITransaction getTransaction(Enum type);
 }

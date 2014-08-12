@@ -54,10 +54,10 @@ public class JDialog_AddAccount extends javax.swing.JDialog {
         getContentPane().add(JLabel5);
         JLabel5.setForeground(java.awt.Color.black);
         JLabel5.setBounds(12, 180, 48, 24);
-        JLabel6.setText("Birthdate");
-        getContentPane().add(JLabel6);
-        JLabel6.setForeground(java.awt.Color.black);
-        JLabel6.setBounds(12, 204, 96, 24);
+//        JLabel6.setText("Birthdate");
+//        getContentPane().add(JLabel6);
+//        JLabel6.setForeground(java.awt.Color.black);
+//        JLabel6.setBounds(12, 204, 96, 24);
         JLabel7.setText("Email");
         getContentPane().add(JLabel7);
         JLabel7.setForeground(java.awt.Color.black);

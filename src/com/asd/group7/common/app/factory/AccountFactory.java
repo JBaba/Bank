@@ -21,12 +21,12 @@ import com.asd.group7.common.lib.transaction.ITransaction;
 public class AccountFactory extends AbstractFactory {
 
     @Override
-    public IParty getParty(PartyType type) {
+    public IParty getParty(Enum type) {
         return null;
     }
 
     @Override
-    public IAccount getAccount(AccountType type) {
+    public IAccount getAccount(Enum type) {
         if (type == AccountType.DEFAULT_ACCOUNT) {
             return new DefaultAccount();
         }
@@ -34,7 +34,7 @@ public class AccountFactory extends AbstractFactory {
     }
 
     @Override
-    public ITransaction getTransaction(TransactionType type) {
+    public ITransaction getTransaction(Enum type) {
         return null;
     }
 }

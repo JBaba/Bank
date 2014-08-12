@@ -22,17 +22,17 @@ import com.asd.group7.common.lib.transaction.ITransaction;
 public class TransactionFactory extends AbstractFactory {
 
     @Override
-    public IParty getParty(PartyType type) {
+    public IParty getParty(Enum type) {
         return null;
     }
 
     @Override
-    public IAccount getAccount(AccountType type) {
+    public IAccount getAccount(Enum type) {
         return null;
     }
 
     @Override
-    public ITransaction getTransaction(TransactionType type) {
+    public ITransaction getTransaction(Enum type) {
         if (type == TransactionType.DEPOSIT) {
             return new Deposit();
         } else if (type == TransactionType.WITHDRAW) {

@@ -45,6 +45,8 @@ public class DepositController implements Controller {
         try{
             IAccount account=accountManager.getAccountById(accrno);
             ITransaction iTransaction=FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
+            iTransaction.setAmount(Double.parseDouble(amount));
+            iTransaction.setName(name);
             accountManager.addDeposit(account, iTransaction);
         }catch(Exception e){
             e.printStackTrace();

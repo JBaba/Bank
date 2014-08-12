@@ -22,7 +22,7 @@ import com.asd.group7.common.lib.transaction.ITransaction;
 public class PartyFactory extends AbstractFactory {
 
     @Override
-    public IParty getParty(PartyType type) {
+    public IParty getParty(Enum type) {
         if (type == PartyType.COMPANY) {
             return new Company();
         } else if (type == PartyType.PERSONAL) {
@@ -32,12 +32,12 @@ public class PartyFactory extends AbstractFactory {
     }
 
     @Override
-    public IAccount getAccount(AccountType type) {
+    public IAccount getAccount(Enum type) {
         return null;
     }
 
     @Override
-    public ITransaction getTransaction(TransactionType type) {
+    public ITransaction getTransaction(Enum type) {
         return null;
     }
 }

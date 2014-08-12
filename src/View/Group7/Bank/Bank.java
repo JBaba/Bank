@@ -32,7 +32,6 @@ public class Bank extends AccountFrm {
 
         JButton_CompAC.addActionListener(new AddCompanyController());
         JButton_PerAC.addActionListener(new AddPersonController());
-        
     }
 
     static public void main(String args[]) {

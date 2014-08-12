@@ -8,8 +8,14 @@ package View.Group7.Bank.Controller;
 
 import View.Group7.Bank.Dailog.CompanyDialog;
 import View.Group7.Bank.Dailog.PersonDialog;
+import View.Group7.Bank.Type.MyAccountType;
+import com.asd.group7.common.app.type.PartyType;
+import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.controller.AccountController;
+import com.asd.group7.common.lib.account.IAccount;
+import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
 
@@ -32,5 +38,10 @@ public class AddPersonController extends AccountController{
         pac.show();
     }
     
-    
+    public void createAccount(MyAccountType accountType,String name,String ct,String st,String str,String zip
+            ,String acnr,String bd,String em){
+        IAccount account=FactoryProducer.getFactory(Types.ACCOUNT).getAccount(accountType);
+        IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.PERSONAL);
+        
+    }
 }
