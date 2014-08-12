@@ -76,4 +76,7 @@ public abstract class AParty implements IParty {
     public void setAccount(IAccount account) {
         this.account = account;
     }
+
+   
+    
 }

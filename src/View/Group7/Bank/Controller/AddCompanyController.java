@@ -46,6 +46,7 @@ public class AddCompanyController extends AccountController{
         //IAccount account=new MyAccountFactory().getAccount(accountType);
         IAccount account=FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
         IParty party1=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.COMPANY);
+        
        // IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.COMPANY);
         //IParty party=new PartyFactory().getParty(PartyType.COMPANY);
     }
