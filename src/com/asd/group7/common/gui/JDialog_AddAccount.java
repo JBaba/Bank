@@ -3,11 +3,9 @@
  */
 package com.asd.group7.common.gui;
 
-import gui.bank.*;
-import java.awt.*;
-import javax.swing.*;
+import com.asd.group7.common.gui.components.asd.ASDDialog;
 
-public class JDialog_AddAccount extends javax.swing.JDialog {
+public class JDialog_AddAccount extends ASDDialog {
 
     private AccountFrm parentframe;
 

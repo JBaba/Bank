@@ -9,6 +9,9 @@ import com.asd.group7.common.app.transaction.Deposit;
 import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.mediator.ISenderColleague;
+import com.asd.group7.common.lib.mediator.Mediator;
+import com.asd.group7.common.lib.mediator.Message;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import com.asd.group7.common.lib.transaction.TransactionManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
@@ -20,13 +23,20 @@ import java.util.List;
  *
  * @author james
  */
-public class AccountManager {
+public class AccountManager implements ISenderColleague {
 
+    private static final String NAME = "ACCOUNT_MANAGER";
+    public static final String ACCOUNT_SELECTED = "ACCOUNT_SELECTED";
+    public static final String ACCOUNT_LIST_NOT_EMPTY = "ACCOUNT_LIST_NOT_EMPTY";
+    
     private List<IAccount> accountList = new ArrayList<IAccount>();
     private TransactionManager transactionManager = null;
+    private Mediator mediator;
 
-    public AccountManager() {
+    public AccountManager(Mediator mediator) {
         transactionManager = ClassicSingleton.getInstanceTransactionManager();
+        this.mediator = mediator;
+        this.send(new Message(ACCOUNT_LIST_NOT_EMPTY, false));
     }
 
     public void addInterest() {
@@ -42,6 +52,7 @@ public class AccountManager {
 
     public void removeAccount(IAccount account) {
         this.getAccountList().remove(account);
+        this.send(new Message(ACCOUNT_LIST_NOT_EMPTY, this.getAccountList().size()>0));
     }
 
     public List<IAccount> getAccountList() {
@@ -50,6 +61,7 @@ public class AccountManager {
 
     public void addAccountToList(IAccount account) {
         this.accountList.add(account);
+        this.send(new Message(ACCOUNT_LIST_NOT_EMPTY, true));
     }
 
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
@@ -91,5 +103,15 @@ public class AccountManager {
     public void performTransaction(IAccount account, ITransaction transaction) {
         transaction.setAccount(account);
         transactionManager.execute(transaction);
+    }
+
+    @Override
+    public void send(Message message) {
+        mediator.send(this, new Message(message.getAbout(), message.isStatus()));
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 }

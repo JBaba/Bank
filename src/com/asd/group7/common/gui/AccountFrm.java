@@ -1,29 +1,38 @@
 package com.asd.group7.common.gui;
 
+import com.asd.group7.common.gui.components.asd.ASDFrame;
+import com.asd.group7.common.gui.components.asd.ASDPanel;
+import com.asd.group7.common.gui.components.asd.ASDScrollPane;
+import com.asd.group7.common.gui.components.ext.AccountEntryDataModel;
+import com.asd.group7.common.gui.components.ext.AccountListTable;
+import com.asd.group7.common.gui.components.ext.AddInterestButton;
+import com.asd.group7.common.gui.components.ext.CompanyAccountButton;
+import com.asd.group7.common.gui.components.ext.DepositButton;
+import com.asd.group7.common.gui.components.ext.ExitButton;
+import com.asd.group7.common.gui.components.ext.PersonalAccountButton;
+import com.asd.group7.common.gui.components.ext.WithdrawButton;
 import com.asd.group7.common.gui.controller.AccountController;
 import com.asd.group7.common.gui.controller.DepositController;
 import com.asd.group7.common.gui.controller.ExitController;
 import com.asd.group7.common.gui.controller.InterestController;
 import com.asd.group7.common.gui.controller.WithdrawController;
-import com.asd.group7.common.lib.account.AAccount;
 import com.asd.group7.common.lib.account.AccountManager;
-import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.factory.FactoryProducer;
-import com.asd.group7.common.lib.party.AParty;
+import com.asd.group7.common.lib.mediator.Mediator;
+import com.asd.group7.common.lib.mediator.Message;
+import com.asd.group7.common.lib.transaction.TransactionManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
-import gui.bank.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
-import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  * A basic JFC based application.
  */
-public class AccountFrm extends javax.swing.JFrame {
+public class AccountFrm extends ASDFrame {
 
     static {
         new FactoryProducer();
@@ -34,17 +43,20 @@ public class AccountFrm extends javax.swing.JFrame {
      */
     public String accountnr, clientName, street, city, zip, state, accountType, clientType, amountDeposit;
     public boolean newaccount;
-    private DefaultTableModel model;
-    private JTable JTable1;
-    private JScrollPane JScrollPane1;
+    private AccountEntryDataModel model;
+    private AccountListTable table1;
+    private ASDScrollPane scrollPane1;
 
     AccountFrm myframe = null;
 
     private Object rowdata[];
+    
+    private Mediator mediator;
 
     public AccountFrm() {
 
         myframe = this;
+        mediator = ClassicSingleton.getMediator();
 
         setTitle("Account Application");
 
@@ -61,17 +73,17 @@ public class AccountFrm extends javax.swing.JFrame {
          /for Adding personal account, Adding company account
          /Deposit, Withdraw and Exit from the system
          */
-        JScrollPane1 = new JScrollPane();
+        scrollPane1 = new ASDScrollPane();
         model = setTableModel();
-        JTable1 = new JTable(model);
+        table1 = new AccountListTable(model);
 
         rowdata = new Object[8];
         newaccount = false;
 
-        JPanel1.add(JScrollPane1);
-        JScrollPane1.setBounds(12, 92, 444, 160);
-        JScrollPane1.getViewport().add(JTable1);
-        JTable1.setBounds(0, 0, 420, 0);
+        JPanel1.add(scrollPane1);
+        scrollPane1.setBounds(12, 92, 444, 160);
+        scrollPane1.getViewport().add(table1);
+        table1.setBounds(0, 0, 420, 0);
 //        rowdata = new Object[8];
 
         JButton_PerAC.setText("Add personal account");
@@ -98,6 +110,10 @@ public class AccountFrm extends javax.swing.JFrame {
 
         SymWindow aSymWindow = new SymWindow();
         this.addWindowListener(aSymWindow);
+    
+        mediator.addColleague(JButton_Deposit);
+        mediator.addColleague(JButton_Withdraw);
+        mediator.addColleague(JButton_Addinterest);
 
         JButton_Exit.addActionListener(new ExitController());
         JButton_PerAC.addActionListener(new AccountController());
@@ -106,6 +122,15 @@ public class AccountFrm extends javax.swing.JFrame {
         JButton_Withdraw.addActionListener(new WithdrawController());
         JButton_Addinterest.addActionListener(new InterestController());
 
+        table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(e.getValueIsAdjusting())
+                    return;
+                model.send(new Message(AccountManager.ACCOUNT_SELECTED, true));
+            }           
+        });
     }
 
     /**
@@ -113,9 +138,9 @@ public class AccountFrm extends javax.swing.JFrame {
      *
      * @return
      */
-    protected DefaultTableModel setTableModel() {
+    protected AccountEntryDataModel setTableModel() {
 
-        DefaultTableModel model = new DefaultTableModel();
+        AccountEntryDataModel model = new AccountEntryDataModel();
         model.addColumn("AccountNr");
         model.addColumn("Name");
         model.addColumn("City");
@@ -142,7 +167,7 @@ public class AccountFrm extends javax.swing.JFrame {
     }
 
     public String getAccountNo() {
-        int selection = JTable1.getSelectionModel().getMinSelectionIndex();
+        int selection = table1.getSelectionModel().getMinSelectionIndex();
         String accnr = "0";
         try {
             accnr = (String) model.getValueAt(selection, 0);
@@ -178,13 +203,13 @@ public class AccountFrm extends javax.swing.JFrame {
         }
     }
 
-    protected javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
-    protected javax.swing.JButton JButton_PerAC = new javax.swing.JButton();
-    protected javax.swing.JButton JButton_CompAC = new javax.swing.JButton();
-    protected javax.swing.JButton JButton_Deposit = new javax.swing.JButton();
-    protected javax.swing.JButton JButton_Withdraw = new javax.swing.JButton();
-    protected javax.swing.JButton JButton_Addinterest = new javax.swing.JButton();
-    protected javax.swing.JButton JButton_Exit = new javax.swing.JButton();
+    protected ASDPanel JPanel1 = new ASDPanel();
+    protected PersonalAccountButton JButton_PerAC = new PersonalAccountButton();
+    protected CompanyAccountButton JButton_CompAC = new CompanyAccountButton();
+    protected DepositButton JButton_Deposit = new DepositButton(mediator);
+    protected WithdrawButton JButton_Withdraw = new WithdrawButton(mediator);
+    protected AddInterestButton JButton_Addinterest = new AddInterestButton(mediator);
+    protected ExitButton JButton_Exit = new ExitButton();
 
     protected void exitApplication() {
         try {

@@ -7,6 +7,7 @@ package com.asd.group7.common.singleton;
 
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.lib.account.AccountManager;
+import com.asd.group7.common.lib.mediator.Mediator;
 import com.asd.group7.common.lib.transaction.TransactionManager;
 
 /**
@@ -18,7 +19,8 @@ public class ClassicSingleton {
     private static AccountFrm instance = null;
     private static AccountManager accountManager = null;
     private static TransactionManager transactionManager = null;
-    
+    private static Mediator mediator = null;
+
     protected ClassicSingleton() {
         // Exists only to defeat instantiation.
     }
@@ -29,18 +31,25 @@ public class ClassicSingleton {
         }
         return instance;
     }
-    
+
     public static AccountManager getInstanceAccountManager() {
         if (accountManager == null) {
-            accountManager = new AccountManager();
+            accountManager = new AccountManager(getMediator());
         }
         return accountManager;
     }
-    
-     public static TransactionManager getInstanceTransactionManager() {
+
+    public static TransactionManager getInstanceTransactionManager() {
         if (transactionManager == null) {
-            transactionManager = new TransactionManager();
+            transactionManager = new TransactionManager(getMediator());
         }
         return transactionManager;
+    }
+
+    public static Mediator getMediator() {
+        if (mediator == null) {
+            mediator = new Mediator();
+        }
+        return mediator;
     }
 }
