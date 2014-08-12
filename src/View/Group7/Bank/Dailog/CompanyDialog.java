@@ -24,7 +24,9 @@ public class CompanyDialog extends JDialog_AddAccount {
         JLabel6.setText("No of employees");
         getContentPane().add(JLabel6);
         JLabel6.setForeground(java.awt.Color.black);
-        JLabel6.setBounds(12, 216, 96, 24);
+        JLabel6.setBounds(12, 204, 96, 24);
+        
+        repaint();
     }
 
     @Override

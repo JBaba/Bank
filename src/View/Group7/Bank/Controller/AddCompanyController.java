@@ -7,7 +7,9 @@
 package View.Group7.Bank.Controller;
 
 import View.Group7.Bank.Dailog.CompanyDialog;
+import View.Group7.Bank.Factory.MyAccountFactory;
 import View.Group7.Bank.Type.MyAccountType;
+import com.asd.group7.common.app.factory.PartyFactory;
 import com.asd.group7.common.app.type.AccountType;
 import com.asd.group7.common.app.type.PartyType;
 import com.asd.group7.common.app.type.Types;
@@ -41,9 +43,10 @@ public class AddCompanyController extends AccountController{
     
     public void createAccount(MyAccountType accountType,String name,String ct,String st,String str,String zip
             ,String acnr,String noe,String em){
-        IAccount account=FactoryProducer.getFactory(Types.ACCOUNT).getAccount(accountType);
-        IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.COMPANY);
-        
+        IAccount account=new MyAccountFactory().getAccount(accountType);
+        IParty party1=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.COMPANY);
+       // IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.COMPANY);
+        //IParty party=new PartyFactory().getParty(PartyType.COMPANY);
     }
     
     
