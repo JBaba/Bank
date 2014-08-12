@@ -16,7 +16,7 @@ import com.asd.group7.common.app.type.Types;
  */
 public class FactoryProducer {
 
-    public AbstractFactory getFactory(Types type) {
+    public static AbstractFactory getFactory(Types type) {
         if (type == Types.PARTY) {
             return new PartyFactory();
         } else if (type == Types.ACCOUNT) {

@@ -6,6 +6,8 @@
 package com.asd.group7.common.lib.account;
 
 import com.asd.group7.common.lib.party.IParty;
+import com.asd.group7.common.lib.transaction.ITransaction;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +16,7 @@ import java.util.List;
  */
 public class AccountManager {
 
-    private List<IAccount> accountList;
+    private List<IAccount> accountList = new ArrayList<IAccount>();
 
     public void addInterest() {
 
@@ -26,5 +28,10 @@ public class AccountManager {
 
     public void removeAccount(IAccount account) {
 
+    }
+    
+    public void addTransactionToAccount(IAccount account, ITransaction transaction) {
+        account.addEntry(transaction);
+        // TODO: update colleagues
     }
 }
