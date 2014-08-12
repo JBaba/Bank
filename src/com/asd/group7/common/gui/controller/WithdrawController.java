@@ -42,7 +42,7 @@ public class WithdrawController implements Controller{
         this();
     }
     
-    public void withdraw(String accrno,String amount){
+    public void withdraw(String accrno,String amount,String name){
         try{
             IAccount account=accountManager.getAccountById(accrno);
             ITransaction iTransaction=FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.WITHDRAW);

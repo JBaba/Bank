@@ -41,7 +41,7 @@ public class DepositController implements Controller {
         this();
     }
 
-    public void deposit(String accrno,String amount){
+    public void deposit(String accrno,String amount,String name){
         try{
             IAccount account=accountManager.getAccountById(accrno);
             ITransaction iTransaction=FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
