@@ -5,12 +5,17 @@ import com.asd.group7.common.gui.controller.DepositController;
 import com.asd.group7.common.gui.controller.ExitController;
 import com.asd.group7.common.gui.controller.InterestController;
 import com.asd.group7.common.gui.controller.WithdrawController;
+import com.asd.group7.common.lib.account.AAccount;
+import com.asd.group7.common.lib.account.AccountManager;
+import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.party.AParty;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import gui.bank.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 
 import javax.swing.*;
@@ -119,6 +124,21 @@ public class AccountFrm extends javax.swing.JFrame {
         model.addColumn("Amount");
 
         return model;
+    }
+
+    protected void loadTableWithData() {
+        AccountManager accountManager = ClassicSingleton.getInstanceAccountManager();
+        for (Iterator<IAccount> it = accountManager.getAccountList().iterator(); it.hasNext();) {
+            IAccount iAccount = it.next();
+            rowdata = new Object[8];
+            rowdata[0] = iAccount.getAccountNumber();
+            AParty aParty=(AParty)iAccount.getParty();
+            rowdata[1] = aParty.getName();
+            rowdata[2] = aParty.getCity();
+            rowdata[3] = aParty.getType();
+            rowdata[4] = iAccount.getType();
+            rowdata[5] = iAccount.getCurrentBalance();
+        }
     }
 
     public String getAccountNo() {
