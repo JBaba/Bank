@@ -6,6 +6,7 @@
 package com.asd.group7.common.app.account;
 
 import com.asd.group7.common.lib.account.AAccount;
+import com.asd.group7.common.lib.party.IParty;
 
 /**
  *
@@ -23,5 +24,15 @@ public class DefaultAccount extends AAccount {
     @Override
     public double getInterestAmount() {
         return 0;
+    }
+
+    @Override
+    public void setParty(IParty iParty) {
+        super.setParty(iParty);
+    }
+
+    @Override
+    public IParty getParty() {
+        return super.getParty();
     }
 }

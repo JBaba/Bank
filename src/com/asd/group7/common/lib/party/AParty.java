@@ -76,8 +76,14 @@ public abstract class AParty implements IParty {
 
     public void addAccount(IAccount account) {
         this.accountList.add(account);
+        account.setParty(this);
     }
 
-   
+    @Override
+    public String toString() {
+        return "AParty{" + "name=" + name + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip + ", email=" + email + '}';
+    }
+
+    
     
 }
