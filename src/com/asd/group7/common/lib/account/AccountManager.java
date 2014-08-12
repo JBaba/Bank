@@ -77,6 +77,5 @@ public class AccountManager {
     
     public void performTransaction(IAccount account,ITransaction transaction){
         transactionManager.execute(transaction);
-        account.addEntry(transaction);
     }
 }
