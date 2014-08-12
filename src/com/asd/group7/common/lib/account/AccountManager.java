@@ -72,6 +72,7 @@ public class AccountManager implements ISenderColleague {
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
         account.updateAmountByTransaction(transaction);
+        //send email about transactions to party
         account.getParty().sendEmail(transaction.getAmount());
         this.updateAccountTable();
     }
@@ -95,7 +96,7 @@ public class AccountManager implements ISenderColleague {
 
     
     /*
-    Controllers will call Withdraw to deposit amount through transaction
+    Controllers will call Withdraw to withdraw amount through transaction
     */
     public void Withdraw(IAccount account, ITransaction transaction) {
         performTransaction(account, transaction);
