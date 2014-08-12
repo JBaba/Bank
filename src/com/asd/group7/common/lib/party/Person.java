@@ -50,11 +50,17 @@ public class Person extends AParty implements IPerson {
         if(DepositMoreThan500Predicate.check(amount))
             functor.compute();
         
+        
     }
 
     @Override
     public String getType() {
         return type;
+    }
+
+    @Override
+    public void sendNegativeBalanceEmail() {
+        System.out.println("Email send to: "+this.getEmail()+" 'You have negative balance'");
     }
 
 

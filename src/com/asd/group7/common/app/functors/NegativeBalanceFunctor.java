@@ -22,7 +22,7 @@ public class NegativeBalanceFunctor implements IFunctor{
             
     @Override
     public void compute() {
-       System.out.println("The email is send to: "+ p.getName()+",with message 'balance is negative'");
+       p.sendNegativeBalanceEmail();
        
     }
     

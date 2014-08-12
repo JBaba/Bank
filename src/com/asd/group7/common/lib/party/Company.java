@@ -8,6 +8,7 @@ package com.asd.group7.common.lib.party;
 import com.asd.group7.common.app.functors.CompanyEmailSendFunctor;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.functor.IFunctor;
+import com.asd.group7.common.lib.predicate.IPredicate;
 import java.util.List;
 
 /**
@@ -57,6 +58,12 @@ public class Company extends AParty implements ICompany {
     public String getType() {
         return type;
     }
+
+    @Override
+    public void sendNegativeBalanceEmail() {
+        
+    }
+
 
     
 }
