@@ -6,6 +6,7 @@
 package com.asd.group7.common.lib.party;
 
 import com.asd.group7.common.lib.account.IAccount;
+import java.util.List;
 
 /**
  *
@@ -19,7 +20,7 @@ public abstract class AParty implements IParty {
     private String state;
     private String zip;
     private String email;
-    private IAccount account;
+    private List<IAccount> accountList;
 
     public String getName() {
         return name;
@@ -69,12 +70,12 @@ public abstract class AParty implements IParty {
         this.email = email;
     }
 
-    public IAccount getAccount() {
-        return account;
+    public List<IAccount> getAccountList() {
+        return accountList;
     }
 
-    public void setAccount(IAccount account) {
-        this.account = account;
+    public void addAccount(IAccount account) {
+        this.accountList.add(account);
     }
 
    

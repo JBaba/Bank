@@ -7,11 +7,8 @@ package View.Group7.Bank;
 
 import View.Group7.Bank.Controller.AddCompanyController;
 import View.Group7.Bank.Controller.AddPersonController;
-import View.Group7.Bank.Factory.MyAccountFactory;
-import View.Group7.Bank.Type.MyAccountType;
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.controller.AccountController;
-import com.asd.group7.common.lib.factory.FactoryProducer;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.UIManager;
@@ -21,10 +18,6 @@ import javax.swing.UIManager;
  * @author naimi_000
  */
 public class Bank extends AccountFrm {
-
-    static {
-        FactoryProducer.addAbstractFactory(MyAccountType.MYAC, new MyAccountFactory());
-    }
 
     public Bank() {
         setTitle("Bank Application");

@@ -29,7 +29,4 @@ public class WithdrawDialog extends JDialog_Dialogview{
         String amount=JTextField_Deposit.getText();
         new WithdrawController().withdraw(this.getAccnr(), amount, name);
     }
-    
-    
-    
 }
