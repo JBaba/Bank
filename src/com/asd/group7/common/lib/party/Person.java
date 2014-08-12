@@ -5,6 +5,8 @@
  */
 package com.asd.group7.common.lib.party;
 
+import com.asd.group7.common.app.predicates.Person500DepositPredicate;
+import com.asd.group7.common.app.functors.PersonSendEmailFunctor;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.predicate.IPredicate;
@@ -42,6 +44,9 @@ public class Person extends AParty implements IPerson {
 
     @Override
     public void sendEmail(double amount) {
+        this.predicate = new Person500DepositPredicate();
+        this.functor = new PersonSendEmailFunctor();
+        
         if(predicate!=null) {
             if(predicate.check(amount))
                 functor.compute();
@@ -54,15 +59,6 @@ public class Person extends AParty implements IPerson {
     public String getType() {
         return type;
     }
-    
-    public void setPredicate(IPredicate p){
-        
-        this.predicate = p;
-    }
-    
-    public void setFunctor(IFunctor f){
-        
-        this.functor = f;
-    }
+
 
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package View.Group7.Bank.Predicates;
+package com.asd.group7.common.app.predicates;
 
 import com.asd.group7.common.lib.predicate.IPredicate;
 

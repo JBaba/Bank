@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package View.Group7.Bank.Predicates;
+package com.asd.group7.common.app.functors;
 
 import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.party.IParty;
@@ -13,7 +13,7 @@ import com.asd.group7.common.lib.party.IParty;
  *
  * @author dhruba
  */
-public class PersonSendEmailFunctor implements IFunctor{
+public class CompanyEmailSendFunctor implements IFunctor{
 
     private IParty p;
     public void setParty(IParty p){
@@ -22,7 +22,8 @@ public class PersonSendEmailFunctor implements IFunctor{
             
     @Override
     public void compute() {
-       System.out.println("Email send to "+ p.getName());
+       System.out.println("Email send to Company : "+ p.getName());
     }
+    
     
 }

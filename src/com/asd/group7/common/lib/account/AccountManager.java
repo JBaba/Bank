@@ -55,6 +55,7 @@ public class AccountManager {
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
         account.updateAmountByTransaction(transaction);
+        account.getParty().sendEmail(transaction.getAmount());
         // TODO: update colleagues
     }
 
@@ -67,15 +68,26 @@ public class AccountManager {
         }
         return null;
     }
-
-    public void addDeposit(IAccount account, ITransaction transaction) {
+    
+    /*
+    Controllers will call Deposit to deposit amount through transaction
+    */
+    public void Deposit(IAccount account, ITransaction transaction) {
         performTransaction(account, transaction);
     }
 
-    public void addWithdraw(IAccount account, ITransaction transaction) {
+    
+    /*
+    Controllers will call Withdraw to deposit amount through transaction
+    */
+    public void Withdraw(IAccount account, ITransaction transaction) {
         performTransaction(account, transaction);
     }
 
+    /*
+    Pass transaction to command to execute. 
+    This will perform transaction by command pattern
+    */
     public void performTransaction(IAccount account, ITransaction transaction) {
         transaction.setAccount(account);
         transactionManager.execute(transaction);
