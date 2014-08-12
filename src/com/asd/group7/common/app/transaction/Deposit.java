@@ -19,10 +19,10 @@ public class Deposit extends Credit {
     public static final String DEPOSIT_INTEREST = "INTEREST";
 
     private IAccount account;
+
     @Override
     public void compute() {
         this.setName(DEPOSIT);
-        account.addBalance(this.getAmount());
         ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);
     }
 
@@ -30,5 +30,4 @@ public class Deposit extends Credit {
     public void setAccount(IAccount account) {
         this.account = account;
     }
-
 }

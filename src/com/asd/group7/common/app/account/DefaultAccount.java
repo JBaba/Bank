@@ -13,9 +13,11 @@ import com.asd.group7.common.lib.account.AAccount;
  */
 public class DefaultAccount extends AAccount {
 
+    public static final String TYPE = "D";
+
     @Override
     public String getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return TYPE;
     }
 
     @Override

@@ -18,7 +18,6 @@ public abstract class AAccount implements IAccount {
 
     private String acctNumber;
     private List<ITransaction> transactions;
-    private String type;
     private double balance;
 
     public String getAcctNumber() {
@@ -33,26 +32,18 @@ public abstract class AAccount implements IAccount {
         return transactions;
     }
 
-    public void setTransactions(List<ITransaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
     @Override
     public void addEntry(ITransaction transaction) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.transactions.add(transaction);
     }
 
     @Override
     public double getCurrentBalance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.balance;
     }
 
     @Override
@@ -61,17 +52,11 @@ public abstract class AAccount implements IAccount {
     }
 
     @Override
-    public void addBalance(double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deductBalance(double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String getAccountNumber() {
         return this.getAccountNumber();
+    }
+    
+    public void updateAmountByTransaction(ITransaction transaction){
+        this.balance += transaction.getSignedAmount();
     }
 }

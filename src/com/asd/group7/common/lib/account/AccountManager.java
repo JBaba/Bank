@@ -11,6 +11,8 @@ import com.asd.group7.common.app.type.AccountType;
 import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.transaction.Credit;
+import com.asd.group7.common.lib.transaction.Debit;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import com.asd.group7.common.lib.transaction.TransactionManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
@@ -42,12 +44,6 @@ public class AccountManager {
         }
     }
 
-    public IAccount createAccount(AccountType accountType) {
-        IAccount account = FactoryProducer.getFactory(Types.PARTY).getAccount(accountType);
-        addAccountToList(account);
-        return account;
-    }
-
     public void removeAccount(IAccount account) {
         this.getAccountList().remove(account);
     }
@@ -62,6 +58,7 @@ public class AccountManager {
     
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
+        account.updateAmountByTransaction(transaction);
         // TODO: update colleagues
     }
     
