@@ -21,7 +21,7 @@ public class Person extends AParty implements IPerson {
     private Date dateOfBirth;
     private final String type = "P";
     
-    private IPredicate predicate;
+    private IPredicate DepositMoreThan500Predicate;
     private IFunctor functor;
 
     public Date getDateOfBirth() {
@@ -44,15 +44,12 @@ public class Person extends AParty implements IPerson {
 
     @Override
     public void sendEmail(double amount) {
-        this.predicate = new Person500DepositPredicate();
+        this.DepositMoreThan500Predicate = new Person500DepositPredicate();
         this.functor = new PersonSendEmailFunctor();
         
-        if(predicate!=null) {
-            if(predicate.check(amount))
-                functor.compute();
-        }
-        else
+        if(DepositMoreThan500Predicate.check(amount))
             functor.compute();
+        
     }
 
     @Override
