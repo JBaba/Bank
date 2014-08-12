@@ -5,6 +5,7 @@
  */
 package com.asd.group7.common.lib.transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,10 @@ import java.util.List;
 public class TransactionManager {
 
     private List<ITransaction> transactionList;
+
+    public TransactionManager() {
+        transactionList=new ArrayList<>();
+    }
     
     public void execute(ITransaction transaction) {       
         transaction.compute();
