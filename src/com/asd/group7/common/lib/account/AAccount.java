@@ -5,8 +5,8 @@
  */
 package com.asd.group7.common.lib.account;
 
-import com.asd.group7.common.lib.functor.Functor;
-import com.asd.group7.common.lib.functor.Predicate;
+import com.asd.group7.common.lib.functor.IFunctor;
+import com.asd.group7.common.lib.functor.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import java.util.Iterator;
@@ -50,7 +50,7 @@ public abstract class AAccount implements IAccount {
     }
 
     @Override
-    public void notifyCustomer(Functor f, Predicate p) {
+    public void notifyCustomer(IFunctor f, IPredicate p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

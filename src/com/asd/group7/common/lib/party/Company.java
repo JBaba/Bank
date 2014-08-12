@@ -6,8 +6,8 @@
 package com.asd.group7.common.lib.party;
 
 import com.asd.group7.common.lib.account.IAccount;
-import com.asd.group7.common.lib.functor.Functor;
-import com.asd.group7.common.lib.functor.Predicate;
+import com.asd.group7.common.lib.functor.IFunctor;
+import com.asd.group7.common.lib.functor.IPredicate;
 import java.util.List;
 
 /**
@@ -47,7 +47,7 @@ public class Company extends AParty implements ICompany {
     }
 
     @Override
-    public void sendEmail(Functor f, Predicate p) {
+    public void sendEmail(IFunctor f, IPredicate p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

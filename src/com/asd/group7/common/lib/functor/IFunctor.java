@@ -9,7 +9,6 @@ package com.asd.group7.common.lib.functor;
  *
  * @author james
  */
-public interface Predicate<T> {
+public interface IFunctor {
 
-    public boolean check(T t);
 }
