@@ -6,9 +6,14 @@
 
 package com.asd.group7.common.gui.controller;
 
+import com.asd.group7.common.app.type.TransactionType;
+import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.JDialog_Dialogview;
 import com.asd.group7.common.lib.account.AccountManager;
+import com.asd.group7.common.lib.account.IAccount;
+import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.transaction.ITransaction;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
 
@@ -38,7 +43,12 @@ public class WithdrawController implements Controller{
     }
     
     public void withdraw(String accrno,String amount){
-    
+        try{
+            IAccount account=accountManager.getAccountById(accrno);
+            ITransaction iTransaction=FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.WITHDRAW);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
 }
