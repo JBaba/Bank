@@ -14,11 +14,13 @@ import com.asd.group7.common.singleton.ClassicSingleton;
  * @author james
  */
 public class Withdraw extends Debit {
+    
+    public static final String WITHDRAW = "WITHDRAW";
 
     private IAccount account;
     @Override
     public void compute() {
-        this.setName("Withdraw");
+        this.setName(WITHDRAW);
         account.deductBalance(this.getAmount());        
         ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);        
     }
