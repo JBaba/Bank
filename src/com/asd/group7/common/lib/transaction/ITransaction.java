@@ -15,5 +15,5 @@ public interface ITransaction {
 
     public void compute();
 
-    public void addAccount(IAccount account);
+    public void setAccount(IAccount account);
 }
