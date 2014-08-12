@@ -7,6 +7,7 @@ package com.asd.group7.common.app.transaction;
 
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.transaction.Debit;
+import com.asd.group7.common.singleton.ClassicSingleton;
 
 /**
  *
@@ -14,13 +15,16 @@ import com.asd.group7.common.lib.transaction.Debit;
  */
 public class Withdraw extends Debit {
 
+    private IAccount account;
     @Override
     public void compute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(account, this);
+        
     }
 
     @Override
     public void addAccount(IAccount account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.account = account;
     }
 }

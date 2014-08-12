@@ -14,8 +14,12 @@ import java.util.List;
 public class TransactionManager {
 
     private List<ITransaction> transactionList;
-
-    public void execute(ITransaction transaction) {
-
+    
+    public void execute(ITransaction transaction) {       
+        transaction.compute();
+        transactionList.add(transaction);
     }
+    
+    public List getListOfTransaction()
+    {return this.transactionList;}
 }
