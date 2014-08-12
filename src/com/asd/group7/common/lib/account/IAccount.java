@@ -6,7 +6,7 @@
 package com.asd.group7.common.lib.account;
 
 import com.asd.group7.common.lib.functor.IFunctor;
-import com.asd.group7.common.lib.functor.IPredicate;
+import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
 

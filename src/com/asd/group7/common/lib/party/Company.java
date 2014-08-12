@@ -7,8 +7,9 @@ package com.asd.group7.common.lib.party;
 
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.functor.IFunctor;
-import com.asd.group7.common.lib.functor.IPredicate;
+import com.asd.group7.common.lib.predicate.IPredicate;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  *
@@ -19,6 +20,8 @@ public class Company extends AParty implements ICompany {
     private int noOfEmployee;
     private final String type = "C";
     private List<Person> personList;
+    private IPredicate predicate;
+    private IFunctor functor;
 
     public int getNoOfEmployee() {
         return noOfEmployee;
@@ -47,13 +50,26 @@ public class Company extends AParty implements ICompany {
     }
 
     @Override
-    public void sendEmail(IFunctor f, IPredicate p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void sendEmail(double amount) {
+        if(predicate!=null) {
+            if(predicate.check(amount))
+                functor.compute();
+        }
+        else
+            functor.compute();
     }
 
     @Override
     public String getType() {
         return type;
+    }
+    
+    public void setPredicate(IPredicate p){
+        
+        this.predicate = p;
+    }
+    public void setFunctor(IFunctor f){
+        this.functor = f;
     }
 
 }
