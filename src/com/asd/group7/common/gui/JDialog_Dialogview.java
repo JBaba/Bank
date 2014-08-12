@@ -7,7 +7,7 @@ import javax.swing.*;
 public class JDialog_Dialogview extends javax.swing.JDialog {
 
     private AccountFrm parentframe;
-    private String accnr;
+    protected String accnr;
 
     public JDialog_Dialogview(AccountFrm parent, String aaccnr) {
         super(parent);
