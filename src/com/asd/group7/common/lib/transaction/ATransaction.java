@@ -13,9 +13,9 @@ import java.util.Date;
  */
 public abstract class ATransaction implements ITransaction {
 
-    protected double amount;
-    protected String name;
-    protected Date date;
+    private double amount;
+    private String name;
+    private Date date;
 
     public double getAmount() {
         return amount;
