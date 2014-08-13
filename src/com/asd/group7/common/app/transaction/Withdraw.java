@@ -31,8 +31,8 @@ public class Withdraw extends Debit {
         this.accountManager = accountManager;
         this.account = account;
     }
-    
-    public IFunctor getDepositFunctor(){
+
+    public IFunctor getDepositFunctor() {
         return null;
     }
 

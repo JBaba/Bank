@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.Group7.CreditCard.Controller;
 
 import View.Group7.Bank.Dailog.PersonDialog;
@@ -22,22 +21,21 @@ import java.awt.event.ActionEvent;
  *
  * @author dhruba
  */
-public class CreditCardController extends AccountController{
-    
+public class CreditCardController extends AccountController {
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         System.out.println("I am a Person");
-        AccountFrm accountFrm=ClassicSingleton.getInstanceAccountFrm();
+        AccountFrm accountFrm = ClassicSingleton.getInstanceAccountFrm();
         PersonDialog pac = new PersonDialog(accountFrm);
         pac.setBounds(450, 20, 300, 330);
         pac.show();
     }
-    
-    public void createAccount(MyAccountType accountType,String name,String ct,String st,String str,String zip
-            ,String acnr,String bd,String em){
+
+    public void createAccount(MyAccountType accountType, String name, String ct, String st, String str, String zip, String acnr, String bd, String em) {
         //IAccount account=new MyAccountFactory().getAccount(accountType);
-        IAccount account=FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
-        IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.PERSONAL);
-        
+        IAccount account = FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
+        IParty party = FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.PERSONAL);
+
     }
 }

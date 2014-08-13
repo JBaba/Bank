@@ -5,8 +5,6 @@
  */
 package com.asd.group7.common.lib.account;
 
-import com.asd.group7.common.lib.functor.IFunctor;
-import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
 
@@ -20,19 +18,17 @@ public interface IAccount {
 
     public double getCurrentBalance();
 
-//    public void notifyCustomer(IFunctor f, IPredicate p, double amount);
-
     public String getType();
 
     public double getInterestAmount();
-    
+
     public void updateAmountByTransaction(ITransaction transaction);
 
     public void setParty(IParty iParty);
-    
+
     public String getAcctNumber();
-    
+
     public IParty getParty();
-    
+
     public StringBuilder generateReport();
 }

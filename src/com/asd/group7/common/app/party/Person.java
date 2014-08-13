@@ -43,9 +43,9 @@ public class Person extends AParty implements IPerson {
 
     @Override
     public void sendEmail(IFunctor f, IPredicate p, double amount) {
-        if(p!=null) {
-            if(p.check(amount)) {
-                if(f!=null) {
+        if (p != null) {
+            if (p.check(amount)) {
+                if (f != null) {
                     f.compute(this);
                 }
             }
@@ -62,7 +62,7 @@ public class Person extends AParty implements IPerson {
     public IPredicate getDepositPredicate() {
         return new Person500DepositPredicate();
     }
-    
+
     public IPredicate getWithdrawPredicate() {
         return new NegativeBalancePredicate();
     }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.Group7.Bank.Dailog;
 
 import com.asd.group7.common.gui.AccountFrm;
@@ -15,7 +14,7 @@ import java.awt.event.ActionEvent;
  *
  * @author naimi_000
  */
-public class DepositDialog extends JDialog_Dialogview{
+public class DepositDialog extends JDialog_Dialogview {
 
     public DepositDialog(AccountFrm parent, String aaccnr) {
         super(parent, aaccnr);
@@ -24,13 +23,11 @@ public class DepositDialog extends JDialog_Dialogview{
 
     @Override
     protected void JButtonOK_actionPerformed(ActionEvent event) {
-        String name=JTextField_NAME.getText();
-        String amount=JTextField_Deposit.getText();
+        String name = JTextField_NAME.getText();
+        String amount = JTextField_Deposit.getText();
         new DepositController().deposit(this.getAccnr(), amount, name);
         dispose();
         setVisible(false);
     }
-    
-    
-    
+
 }

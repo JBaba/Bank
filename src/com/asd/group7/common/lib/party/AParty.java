@@ -6,7 +6,6 @@
 package com.asd.group7.common.lib.party;
 
 import com.asd.group7.common.lib.account.IAccount;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,11 +24,9 @@ public abstract class AParty implements IParty {
     private List<IAccount> accountList;
 
     public AParty() {
-        accountList=new ArrayList<>();
+        accountList = new ArrayList<>();
     }
 
-    
-    
     public String getName() {
         return name;
     }
@@ -87,10 +84,10 @@ public abstract class AParty implements IParty {
         this.accountList.add(account);
         account.setParty(this);
     }
-    
+
     public double getBalance() {
         double balance = 0;
-        for(IAccount account: this.getAccountList()) {
+        for (IAccount account : this.getAccountList()) {
             balance += account.getCurrentBalance();
         }
         return balance;
@@ -101,6 +98,4 @@ public abstract class AParty implements IParty {
         return "AParty{" + "name=" + name + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip + ", email=" + email + '}';
     }
 
-    
-    
 }

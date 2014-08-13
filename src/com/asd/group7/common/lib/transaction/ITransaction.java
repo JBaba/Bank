@@ -30,8 +30,8 @@ public interface ITransaction {
     public double getSignedAmount();
 
     public void setupTransaction(AccountManager accountManager, IAccount account);
-    
+
     public IFunctor getDepositFunctor();
-    
+
     public IFunctor getWithdrawFunctor();
 }

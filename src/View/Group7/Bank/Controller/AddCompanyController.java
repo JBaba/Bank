@@ -7,14 +7,10 @@
 package View.Group7.Bank.Controller;
 
 import View.Group7.Bank.Dailog.CompanyDialog;
-import View.Group7.Bank.Factory.MyAccountFactory;
 import View.Group7.Bank.Type.MyAccountType;
-import com.asd.group7.common.app.factory.PartyFactory;
-import com.asd.group7.common.app.type.AccountType;
 import com.asd.group7.common.app.type.PartyType;
 import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.gui.AccountFrm;
-import com.asd.group7.common.gui.JDialog_AddAccount;
 import com.asd.group7.common.gui.controller.AccountController;
 import com.asd.group7.common.lib.account.AAccount;
 import com.asd.group7.common.lib.account.IAccount;
@@ -36,7 +32,6 @@ public class AddCompanyController extends AccountController{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        System.out.println("I am a companay");
         AccountFrm accountFrm=ClassicSingleton.getInstanceAccountFrm();
         CompanyDialog pac = new CompanyDialog(accountFrm);
         pac.setBounds(450, 20, 300, 330);

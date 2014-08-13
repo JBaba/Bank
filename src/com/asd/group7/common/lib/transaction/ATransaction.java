@@ -53,5 +53,5 @@ public abstract class ATransaction implements ITransaction {
     public void setAccount(IAccount account) {
         this.account = account;
     }
-    
+
 }

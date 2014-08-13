@@ -16,7 +16,7 @@ import com.asd.group7.common.lib.transaction.Credit;
  * @author james
  */
 public class Deposit extends Credit {
-    
+
     public static final String DEPOSIT = "DEPOSIT";
     public static final String DEPOSIT_INTEREST = "INTEREST";
 
@@ -32,8 +32,8 @@ public class Deposit extends Credit {
         this.accountManager = accountManager;
         this.account = account;
     }
-    
-    public IFunctor getDepositFunctor(){
+
+    public IFunctor getDepositFunctor() {
         return new NewBalanceFunctor();
     }
 

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.Group7.Bank.Account;
 
 import com.asd.group7.common.lib.account.AAccount;
@@ -13,7 +12,7 @@ import com.asd.group7.common.lib.party.IParty;
  *
  * @author naimi_000
  */
-public class CheckingAccount extends AAccount{
+public class CheckingAccount extends AAccount {
 
     @Override
     public String getType() {
@@ -24,7 +23,7 @@ public class CheckingAccount extends AAccount{
     public double getInterestAmount() {
         return 3;
     }
-    
+
     @Override
     public void setParty(IParty iParty) {
         super.setParty(iParty);

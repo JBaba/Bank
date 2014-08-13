@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.Group7.Bank.Controller;
 
 import View.Group7.Bank.Dailog.PersonDialog;
@@ -25,7 +24,7 @@ import java.util.Date;
  *
  * @author naimi_000
  */
-public class AddPersonController extends AccountController{
+public class AddPersonController extends AccountController {
 
     public AddPersonController() {
         super();
@@ -33,23 +32,21 @@ public class AddPersonController extends AccountController{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        System.out.println("I am a Person");
-        AccountFrm accountFrm=ClassicSingleton.getInstanceAccountFrm();
+        AccountFrm accountFrm = ClassicSingleton.getInstanceAccountFrm();
         PersonDialog pac = new PersonDialog(accountFrm);
         pac.setBounds(450, 20, 300, 330);
         pac.show();
     }
-    
-    public void createAccount(MyAccountType accountType,String name,String ct,String st,String str,String zip
-            ,String acnr,String bd,String em){
-        IAccount account=FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
-        IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.PERSONAL);
-        AAccount aAccount = (AAccount)account;
+
+    public void createAccount(MyAccountType accountType, String name, String ct, String st, String str, String zip, String acnr, String bd, String em) {
+        IAccount account = FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
+        IParty party = FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.PERSONAL);
+        AAccount aAccount = (AAccount) account;
         aAccount.setAcctNumber(acnr);
-        
+
         account = aAccount;
-        
-        Person c=(Person)party;
+
+        Person c = (Person) party;
         c.setName(name);
         c.setCity(ct);
         c.setState(st);
@@ -57,9 +54,9 @@ public class AddPersonController extends AccountController{
         c.setZip(zip);
         c.setDateOfBirth(new Date(bd));
         c.setEmail(em);
-        party=c;
+        party = c;
         party.addAccount(account);
         ClassicSingleton.getInstanceAccountManager().addAccountToList(account);
-        
+
     }
 }

@@ -20,12 +20,11 @@ public class ClassicSingleton {
     private static AccountManager accountManager = null;
     private static TransactionManager transactionManager = null;
     private static Mediator mediator = null;
-    
 
     protected ClassicSingleton() {
         // Exists only to defeat instantiation.
     }
-    
+
     public static void setAccountFrm(AccountFrm accountFrm) {
         instance = accountFrm;
     }

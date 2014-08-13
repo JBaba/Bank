@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.Group7.Bank.Controller;
 
-import View.Group7.Bank.Dailog.DepositDialog;
 import View.Group7.Bank.Dailog.WithdrawDialog;
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.JDialog_Dialogview;
@@ -17,7 +15,7 @@ import java.awt.event.ActionEvent;
  *
  * @author james
  */
-public class WithdrawController extends com.asd.group7.common.gui.controller.WithdrawController{
+public class WithdrawController extends com.asd.group7.common.gui.controller.WithdrawController {
 
     public WithdrawController() {
         super();
@@ -31,6 +29,5 @@ public class WithdrawController extends com.asd.group7.common.gui.controller.Wit
         dep.setBounds(430, 15, 275, 140);
         dep.show();
     }
-    
-    
+
 }

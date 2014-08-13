@@ -22,12 +22,12 @@ import java.awt.event.ActionEvent;
  */
 public class DepositController implements Controller {
 
-    private AccountManager accountManager=null;
-    
+    private AccountManager accountManager = null;
+
     public DepositController() {
-        accountManager=ClassicSingleton.getInstanceAccountManager();
+        accountManager = ClassicSingleton.getInstanceAccountManager();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         AccountFrm accountFrm = ClassicSingleton.getInstanceAccountFrm();
@@ -37,18 +37,18 @@ public class DepositController implements Controller {
         dep.show();
     }
 
-    public DepositController(String accrno,String amount){
+    public DepositController(String accrno, String amount) {
         this();
     }
 
-    public void deposit(String accrno,String amount,String name){
-        try{
-            IAccount account=accountManager.getAccountById(accrno);
-            ITransaction iTransaction=FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
+    public void deposit(String accrno, String amount, String name) {
+        try {
+            IAccount account = accountManager.getAccountById(accrno);
+            ITransaction iTransaction = FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
             iTransaction.setAmount(Double.parseDouble(amount));
             iTransaction.setName(name);
             accountManager.Deposit(account, iTransaction);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

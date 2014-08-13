@@ -18,5 +18,5 @@ public class ASDArrayList extends ArrayList {
 
     public Iterator getSortedIterator(Comparator comparator) {
         return new SortedIterator(this, comparator);
-    }    
+    }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.Group7.CreditCard.Account;
 
 import com.asd.group7.common.lib.account.AAccount;
@@ -12,7 +11,7 @@ import com.asd.group7.common.lib.account.AAccount;
  *
  * @author dhruba
  */
-public class Bronze extends AAccount{
+public class Bronze extends AAccount {
 
     @Override
     public String getType() {
@@ -23,5 +22,5 @@ public class Bronze extends AAccount{
     public double getInterestAmount() {
         return 3;
     }
-    
+
 }

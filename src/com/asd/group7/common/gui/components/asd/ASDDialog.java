@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.gui.components.asd;
 
 import java.awt.Frame;
@@ -18,5 +17,5 @@ public class ASDDialog extends JDialog {
     public ASDDialog(Frame owner) {
         super(owner);
     }
-    
+
 }

@@ -5,9 +5,6 @@
  */
 package com.asd.group7.common.lib.account;
 
-import com.asd.group7.common.app.functors.NegativeBalanceFunctor;
-import com.asd.group7.common.app.predicates.NegativeBalancePredicate;
-import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
@@ -24,9 +21,9 @@ public abstract class AAccount implements IAccount {
     private String acctNumber;
     private List<ITransaction> transactions;
     private double balance;
-    private IParty iParty;    
+    private IParty iParty;
     IPredicate<Double> negativeBalanceNotifierPredicate;
-    
+
     public String getAcctNumber() {
         return acctNumber;
     }
@@ -45,7 +42,7 @@ public abstract class AAccount implements IAccount {
 
     @Override
     public void addEntry(ITransaction transaction) {
-        if(this.transactions == null) {
+        if (this.transactions == null) {
             this.transactions = new ArrayList<>();
         }
         this.transactions.add(transaction);
@@ -55,8 +52,8 @@ public abstract class AAccount implements IAccount {
     public double getCurrentBalance() {
         return this.balance;
     }
-    
-    public void updateAmountByTransaction(ITransaction transaction){
+
+    public void updateAmountByTransaction(ITransaction transaction) {
         this.balance += transaction.getSignedAmount();
     }
 
@@ -67,16 +64,16 @@ public abstract class AAccount implements IAccount {
 
     @Override
     public void setParty(IParty iParty) {
-        this.iParty=iParty;
+        this.iParty = iParty;
     }
 
     @Override
     public StringBuilder generateReport() {
-        
-        StringBuilder myBuilder=new StringBuilder();
-        myBuilder.append("------------- Account No: "+acctNumber+" -------------");
-        myBuilder.append(iParty.toString()+"\n");
-        myBuilder.append(this.toString()+"\n");
+
+        StringBuilder myBuilder = new StringBuilder();
+        myBuilder.append("------------- Account No: " + acctNumber + " -------------");
+        myBuilder.append(iParty.toString() + "\n");
+        myBuilder.append(this.toString() + "\n");
         myBuilder.append("------------- Transaction Report ---------------------");
         for (Iterator<ITransaction> it = transactions.iterator(); it.hasNext();) {
             ITransaction iTransaction = it.next();
@@ -90,8 +87,4 @@ public abstract class AAccount implements IAccount {
         return "AAccount{" + "acctNumber=" + acctNumber + ", balance=" + balance + '}';
     }
 
-    
-    
-    
-    
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.gui.controller;
 
 import java.awt.event.ActionEvent;
@@ -12,11 +11,11 @@ import java.awt.event.ActionEvent;
  *
  * @author naimi_000
  */
-public class ExitController implements Controller{
+public class ExitController implements Controller {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         System.exit(0);
     }
-    
+
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.Group7.Bank.Controller;
 
 import View.Group7.Bank.Dailog.DepositDialog;
@@ -16,7 +15,7 @@ import java.awt.event.ActionEvent;
  *
  * @author james
  */
-public class DepositController extends com.asd.group7.common.gui.controller.DepositController{
+public class DepositController extends com.asd.group7.common.gui.controller.DepositController {
 
     public DepositController() {
         super();
@@ -30,6 +29,5 @@ public class DepositController extends com.asd.group7.common.gui.controller.Depo
         dep.setBounds(430, 15, 275, 140);
         dep.show();
     }
-    
-    
+
 }

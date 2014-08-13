@@ -11,7 +11,6 @@ import com.asd.group7.common.lib.party.AParty;
 import com.asd.group7.common.lib.party.ICompany;
 import com.asd.group7.common.lib.predicate.IPredicate;
 import java.util.List;
-import javax.sql.rowset.Predicate;
 
 /**
  *
@@ -52,9 +51,9 @@ public class Company extends AParty implements ICompany {
 
     @Override
     public void sendEmail(IFunctor f, IPredicate p, double amount) {
-        if(p!=null) {
-            if(p.check(amount)) {
-                if(f!=null) {
+        if (p != null) {
+            if (p.check(amount)) {
+                if (f != null) {
                     f.compute(this);
                 }
             }
@@ -71,7 +70,7 @@ public class Company extends AParty implements ICompany {
     public IPredicate getDepositPredicate() {
         return null;
     }
-    
+
     public IPredicate getWithdrawPredicate() {
         return null;
     }

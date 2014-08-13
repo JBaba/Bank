@@ -17,25 +17,25 @@ import java.util.HashMap;
  */
 public class FactoryProducer {
 
-    public static HashMap<Enum,AbstractFactory> hashMap=new HashMap<>();
+    public static HashMap<Enum, AbstractFactory> hashMap = new HashMap<>();
 
     static {
         hashMap.put(Types.PARTY, new PartyFactory());
         hashMap.put(Types.ACCOUNT, new AccountFactory());
         hashMap.put(Types.TRANSACTION, new TransactionFactory());
     }
-    
+
     public FactoryProducer() {
 //        hashMap.put(Types.PARTY, new PartyFactory());
 //        hashMap.put(Types.ACCOUNT, new AccountFactory());
 //        hashMap.put(Types.TRANSACTION, new TransactionFactory());
     }
-    
+
     public static AbstractFactory getFactory(Enum type) {
         return hashMap.get(type);
     }
-    
-    public static void addAbstractFactory(Enum e,AbstractFactory factory){
+
+    public static void addAbstractFactory(Enum e, AbstractFactory factory) {
         hashMap.put(e, factory);
     }
 }

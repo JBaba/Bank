@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.gui.controller;
 
 import com.asd.group7.common.gui.AccountFrm;
@@ -16,22 +15,22 @@ import java.awt.event.ActionEvent;
  *
  * @author naimi_000
  */
-public class AccountController implements Controller{
+public class AccountController implements Controller {
 
-    private AccountManager accountManager=null;
-    
+    private AccountManager accountManager = null;
+
     public AccountController() {
-        accountManager=ClassicSingleton.getInstanceAccountManager();
+        accountManager = ClassicSingleton.getInstanceAccountManager();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         //get Singlton variable and pass to dailog
-        AccountFrm accountFrm=ClassicSingleton.getInstanceAccountFrm();
+        AccountFrm accountFrm = ClassicSingleton.getInstanceAccountFrm();
         JDialog_AddAccount pac = new JDialog_AddAccount(accountFrm);
         pac.setBounds(450, 20, 300, 330);
         pac.show();
-        
+
     }
-    
+
 }

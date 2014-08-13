@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.lib.iterator;
 
 /**
@@ -11,5 +10,5 @@ package com.asd.group7.common.lib.iterator;
  * @author dhruba
  */
 public interface IIterator {
-    
+
 }

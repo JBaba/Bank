@@ -25,7 +25,7 @@ public class TransactionManager implements ISenderColleague {
         transactionList = new ArrayList<>();
         this.mediator = mediator;
     }
-    
+
     public void setMediator(Mediator mediator) {
         this.mediator = mediator;
     }

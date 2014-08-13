@@ -8,7 +8,6 @@ package com.asd.group7.common.gui.components.ext;
 import com.asd.group7.common.gui.components.asd.ASDTable;
 import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.lib.mediator.IReceiverColleague;
-import com.asd.group7.common.lib.mediator.Mediator;
 import com.asd.group7.common.lib.mediator.Message;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import javax.swing.table.TableModel;

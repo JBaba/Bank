@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.gui.controller;
 
 import com.asd.group7.common.app.type.TransactionType;
@@ -21,12 +20,12 @@ import java.awt.event.ActionEvent;
  *
  * @author naimi_000
  */
-public class WithdrawController implements Controller{
+public class WithdrawController implements Controller {
 
-    private AccountManager accountManager=null;
-    
+    private AccountManager accountManager = null;
+
     public WithdrawController() {
-        accountManager=ClassicSingleton.getInstanceAccountManager();
+        accountManager = ClassicSingleton.getInstanceAccountManager();
     }
 
     @Override
@@ -37,21 +36,21 @@ public class WithdrawController implements Controller{
         dep.setBounds(430, 15, 275, 140);
         dep.show();
     }
-    
-    public WithdrawController(String accrno,String amount){
+
+    public WithdrawController(String accrno, String amount) {
         this();
     }
-    
-    public void withdraw(String accrno,String amount,String name){
-        try{
-            IAccount account=accountManager.getAccountById(accrno);
-            ITransaction iTransaction=FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.WITHDRAW);
+
+    public void withdraw(String accrno, String amount, String name) {
+        try {
+            IAccount account = accountManager.getAccountById(accrno);
+            ITransaction iTransaction = FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.WITHDRAW);
             iTransaction.setAmount(Double.parseDouble(amount));
             iTransaction.setName(name);
             accountManager.Withdraw(account, iTransaction);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
 }

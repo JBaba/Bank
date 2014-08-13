@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.asd.group7.common.app.iterator;
 
 import com.asd.group7.common.lib.predicate.IPredicate;
@@ -14,11 +13,11 @@ import java.util.List;
  *
  * @author dAdhikari
  */
-public class SelectiveIterator<T> implements Iterator<T>{
-    
+public class SelectiveIterator<T> implements Iterator<T> {
+
     private ListIterator it;
     private IPredicate predicate;
-    
+
     public SelectiveIterator(List list, IPredicate predicate) {
         this.it = list.listIterator();
         this.predicate = predicate;
@@ -26,10 +25,8 @@ public class SelectiveIterator<T> implements Iterator<T>{
 
     @Override
     public boolean hasNext() {
-        while(it.hasNext())
-        { 
-            if(predicate.check(it.next())==true)
-            {
+        while (it.hasNext()) {
+            if (predicate.check(it.next()) == true) {
                 it.previous();
                 return true;
             }
@@ -39,22 +36,20 @@ public class SelectiveIterator<T> implements Iterator<T>{
 
     @Override
     public T next() {
-        while(it.hasNext())
-        {
+        while (it.hasNext()) {
             Object i = it.next();
-            if(predicate.check(i)==true)
-            {
-                return (T)i;  
+            if (predicate.check(i) == true) {
+                return (T) i;
             }
-                
+
         }
         return null;
-       
+
     }
 
     @Override
     public void remove() {
         it.remove();
     }
-    
+
 }

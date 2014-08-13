@@ -7,8 +7,6 @@ package com.asd.group7.common.app.factory;
 
 import com.asd.group7.common.app.account.DefaultAccount;
 import com.asd.group7.common.app.type.AccountType;
-import com.asd.group7.common.app.type.PartyType;
-import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.lib.factory.AbstractFactory;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.party.IParty;

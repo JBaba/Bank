@@ -12,13 +12,10 @@ import View.Group7.Bank.Controller.WithdrawController;
 import View.Group7.Bank.Factory.MyAccountFactory;
 import View.Group7.Bank.Type.MyAccountType;
 import com.asd.group7.common.gui.AccountFrm;
-import com.asd.group7.common.gui.controller.AccountController;
 import com.asd.group7.common.lib.factory.FactoryProducer;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,11 +26,11 @@ public class Bank extends AccountFrm {
     static {
         FactoryProducer.addAbstractFactory(MyAccountType.MYAC, new MyAccountFactory());
     }
-    
+
     public static Bank bank;
-    
+
     public static Bank getInstance() {
-        if(bank==null) {
+        if (bank == null) {
             bank = new Bank();
             ClassicSingleton.setAccountFrm(bank);
         }
@@ -56,15 +53,12 @@ public class Bank extends AccountFrm {
         for (ActionListener al : JButton_Withdraw.getActionListeners()) {
             JButton_Withdraw.removeActionListener(al);
         }
-        
 
         JButton_CompAC.addActionListener(new AddCompanyController());
         JButton_PerAC.addActionListener(new AddPersonController());
         JButton_Deposit.addActionListener(new DepositController());
         JButton_Withdraw.addActionListener(new WithdrawController());
     }
-
-   
 
     static public void main(String args[]) {
         try {

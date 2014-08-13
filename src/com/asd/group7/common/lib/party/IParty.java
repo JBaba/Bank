@@ -22,14 +22,14 @@ public interface IParty {
     public void sendEmail(IFunctor f, IPredicate p, double amount);
 
     public String getType();
-    
+
     public String getName();
 
     public void setName(String name);
-    
+
     public IPredicate getDepositPredicate();
-    
+
     public IPredicate getWithdrawPredicate();
-    
+
     public double getBalance();
 }
