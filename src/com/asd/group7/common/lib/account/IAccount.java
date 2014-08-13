@@ -20,7 +20,7 @@ public interface IAccount {
 
     public double getCurrentBalance();
 
-    public void notifyCustomer(IFunctor f, IPredicate p);
+//    public void notifyCustomer(IFunctor f, IPredicate p, double amount);
 
     public String getType();
 

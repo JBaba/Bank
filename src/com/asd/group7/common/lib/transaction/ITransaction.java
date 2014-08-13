@@ -5,7 +5,9 @@
  */
 package com.asd.group7.common.lib.transaction;
 
+import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.lib.account.IAccount;
+import com.asd.group7.common.lib.functor.IFunctor;
 
 /**
  *
@@ -18,12 +20,18 @@ public interface ITransaction {
     public void setAccount(IAccount account);
 
     public IAccount getAccount();
-    
+
     public void setAmount(double amount);
 
     public double getAmount();
 
     public void setName(String name);
-    
+
     public double getSignedAmount();
+
+    public void setupTransaction(AccountManager accountManager, IAccount account);
+    
+    public IFunctor getDepositFunctor();
+    
+    public IFunctor getWithdrawFunctor();
 }

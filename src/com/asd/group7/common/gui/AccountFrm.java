@@ -140,8 +140,6 @@ public class AccountFrm extends ASDFrame {
             }
         });
 
-        model = (AccountEntryDataModel) table1.getModel();
-        model.addRow(rowdata);
     }
 
     /**
@@ -163,8 +161,8 @@ public class AccountFrm extends ASDFrame {
     }
 
     public void loadTableWithData() {
+        model.setRowCount(0);
         AccountManager accountManager = ClassicSingleton.getInstanceAccountManager();
-        model = (AccountEntryDataModel) table1.getModel();
         for (Iterator<IAccount> it = accountManager.getAccountList().iterator(); it.hasNext();) {
             IAccount iAccount = it.next();
             rowdata = new Object[8];
@@ -175,20 +173,9 @@ public class AccountFrm extends ASDFrame {
             rowdata[3] = aParty.getType();
             rowdata[4] = iAccount.getType();
             rowdata[5] = iAccount.getCurrentBalance();
-            SwingUtilities.invokeLater(new Runnable() {
-
-                @Override
-                public void run() {
-                    model.addRow(rowdata);
-                }
-            });
             model.addRow(rowdata);
         }
-        //model.addRow(rowdata);
-        model.fireTableDataChanged();
-        table1.repaint();
-        System.out.println("Row in table:" + table1.getRowCount());
-        System.out.println("Row in model:" + model.getRowCount());
+        
 
     }
 

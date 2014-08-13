@@ -10,9 +10,9 @@ import com.asd.group7.common.app.type.PartyType;
 import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.lib.factory.AbstractFactory;
 import com.asd.group7.common.lib.account.IAccount;
-import com.asd.group7.common.lib.party.Company;
+import com.asd.group7.common.app.party.Company;
 import com.asd.group7.common.lib.party.IParty;
-import com.asd.group7.common.lib.party.Person;
+import com.asd.group7.common.app.party.Person;
 import com.asd.group7.common.lib.transaction.ITransaction;
 
 /**

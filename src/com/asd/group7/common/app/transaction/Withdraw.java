@@ -5,9 +5,11 @@
  */
 package com.asd.group7.common.app.transaction;
 
+import com.asd.group7.common.app.functors.NegativeBalanceFunctor;
+import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.lib.account.IAccount;
+import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.transaction.Debit;
-import com.asd.group7.common.singleton.ClassicSingleton;
 
 /**
  *
@@ -17,15 +19,25 @@ public class Withdraw extends Debit {
 
     public static final String WITHDRAW = "WITHDRAW";
 
+    private AccountManager accountManager;
     private IAccount account;
 
     @Override
     public void compute() {
-        ClassicSingleton.getInstanceAccountManager().addTransactionToAccount(super.getAccount(), this);
+        accountManager.addTransactionToAccount(account, this);
+    }
+
+    public void setupTransaction(AccountManager accountManager, IAccount account) {
+        this.accountManager = accountManager;
+        this.account = account;
+    }
+    
+    public IFunctor getDepositFunctor(){
+        return null;
     }
 
     @Override
-    public void setAccount(IAccount account) {
-        this.account = account;      
+    public IFunctor getWithdrawFunctor() {
+        return new NegativeBalanceFunctor();
     }
 }

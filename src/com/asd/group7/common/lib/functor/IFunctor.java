@@ -9,6 +9,6 @@ package com.asd.group7.common.lib.functor;
  *
  * @author james
  */
-public interface IFunctor {
-    public void compute();
+public interface IFunctor<T> {
+    public void compute(T t);
 }

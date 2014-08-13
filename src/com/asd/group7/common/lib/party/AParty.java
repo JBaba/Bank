@@ -87,6 +87,14 @@ public abstract class AParty implements IParty {
         this.accountList.add(account);
         account.setParty(this);
     }
+    
+    public double getBalance() {
+        double balance = 0;
+        for(IAccount account: this.getAccountList()) {
+            balance += account.getCurrentBalance();
+        }
+        return balance;
+    }
 
     @Override
     public String toString() {

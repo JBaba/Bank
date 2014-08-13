@@ -9,15 +9,18 @@ import com.asd.group7.common.app.transaction.Deposit;
 import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.mediator.ISenderColleague;
 import com.asd.group7.common.lib.mediator.Mediator;
 import com.asd.group7.common.lib.mediator.Message;
+import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import com.asd.group7.common.lib.transaction.TransactionManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.sql.rowset.Predicate;
 
 /**
  *
@@ -45,7 +48,7 @@ public class AccountManager implements ISenderColleague {
         for (IAccount account : this.getAccountList()) {
             double interestAmount = account.getInterestAmount();
             ITransaction deposit = FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
-            deposit.setAccount(account);
+            deposit.setupTransaction(this, account);
             deposit.setName(Deposit.DEPOSIT_INTEREST);
             deposit.setAmount(interestAmount);
             transactionManager.execute(deposit);
@@ -74,8 +77,19 @@ public class AccountManager implements ISenderColleague {
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
         account.updateAmountByTransaction(transaction);
-        //send email about transactions to party
-        account.getParty().sendEmail(transaction.getAmount());
+        
+        IPredicate p;
+        IFunctor f;
+        
+        if(transaction instanceof Deposit) {
+            p = account.getParty().getDepositPredicate();
+            f = transaction.getDepositFunctor();
+        } else {
+            p = account.getParty().getWithdrawPredicate();
+            f = transaction.getWithdrawFunctor();
+        }
+        
+        account.getParty().sendEmail(f, p, account.getCurrentBalance());
         this.updateAccountTable();
     }
 
@@ -109,7 +123,7 @@ public class AccountManager implements ISenderColleague {
     This will perform transaction by command pattern
     */
     public void performTransaction(IAccount account, ITransaction transaction) {
-        transaction.setAccount(account);
+        transaction.setupTransaction(this, account);
         transactionManager.execute(transaction);
     }
 

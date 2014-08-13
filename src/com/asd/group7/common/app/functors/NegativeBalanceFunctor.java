@@ -13,18 +13,10 @@ import com.asd.group7.common.lib.party.IParty;
  *
  * @author dhruba
  */
-public class NegativeBalanceFunctor implements IFunctor{
-
-    private IParty p;
-    public NegativeBalanceFunctor(IParty p){
-        this.p = p;
-    }
+public class NegativeBalanceFunctor implements IFunctor<IParty>{
             
     @Override
-    public void compute() {
-       p.sendNegativeBalanceEmail();
-       
-    }
-    
-    
+    public void compute(IParty p) {
+          
+    }   
 }

@@ -13,17 +13,10 @@ import com.asd.group7.common.lib.party.IParty;
  *
  * @author dhruba
  */
-public class CompanyEmailSendFunctor implements IFunctor{
-
-    private IParty p;
-    public void setParty(IParty p){
-        this.p = p;
-    }
+public class NewBalanceFunctor implements IFunctor<IParty>{
             
     @Override
-    public void compute() {
-       System.out.println("Email send to Company : "+ p.getName());
-    }
-    
-    
+    public void compute(IParty p) {
+       System.out.println("Email: Your new balance is"+ p.getBalance());
+    }    
 }

@@ -11,6 +11,7 @@ import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -44,6 +45,9 @@ public abstract class AAccount implements IAccount {
 
     @Override
     public void addEntry(ITransaction transaction) {
+        if(this.transactions == null) {
+            this.transactions = new ArrayList<>();
+        }
         this.transactions.add(transaction);
     }
 
@@ -51,20 +55,9 @@ public abstract class AAccount implements IAccount {
     public double getCurrentBalance() {
         return this.balance;
     }
-
-    //send email if balance is negative
-    @Override
-    public void notifyCustomer(IFunctor f, IPredicate p) {
-        if(p.check(this.getCurrentBalance()))
-            f.compute();
-    }
     
     public void updateAmountByTransaction(ITransaction transaction){
         this.balance += transaction.getSignedAmount();
-        
-        //check if balance is negative
-        negativeBalanceNotifierPredicate = new NegativeBalancePredicate();        
-        this.notifyCustomer(new NegativeBalanceFunctor(iParty), negativeBalanceNotifierPredicate);
     }
 
     @Override

@@ -175,7 +175,7 @@ public class JDialog_AddAccount extends ASDDialog {
 //            parentframe.accountType = "S";
 //        }
 //        parentframe.newaccount = true;
-        dispose();
+//        dispose();
     }
 
     protected void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {

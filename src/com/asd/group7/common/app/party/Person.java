@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.asd.group7.common.lib.party;
+package com.asd.group7.common.app.party;
 
+import com.asd.group7.common.app.predicates.NegativeBalancePredicate;
 import com.asd.group7.common.app.predicates.Person500DepositPredicate;
-import com.asd.group7.common.app.functors.PersonSendEmailFunctor;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.functor.IFunctor;
+import com.asd.group7.common.lib.party.AParty;
+import com.asd.group7.common.lib.party.IPerson;
 import com.asd.group7.common.lib.predicate.IPredicate;
 import java.util.Date;
 
@@ -20,9 +22,6 @@ public class Person extends AParty implements IPerson {
 
     private Date dateOfBirth;
     private final String type = "P";
-    
-    private IPredicate DepositMoreThan500Predicate;
-    private IFunctor functor;
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -43,14 +42,16 @@ public class Person extends AParty implements IPerson {
     }
 
     @Override
-    public void sendEmail(double amount) {
-        this.DepositMoreThan500Predicate = new Person500DepositPredicate();
-        this.functor = new PersonSendEmailFunctor();
-        
-        if(DepositMoreThan500Predicate.check(amount))
-            functor.compute();
-        
-        
+    public void sendEmail(IFunctor f, IPredicate p, double amount) {
+        if(p!=null) {
+            if(p.check(amount)) {
+                if(f!=null) {
+                    f.compute(this);
+                }
+            }
+        } else {
+            f.compute(this);
+        }
     }
 
     @Override
@@ -58,10 +59,11 @@ public class Person extends AParty implements IPerson {
         return type;
     }
 
-    @Override
-    public void sendNegativeBalanceEmail() {
-        System.out.println("Email send to: "+this.getEmail()+" 'You have negative balance'");
+    public IPredicate getDepositPredicate() {
+        return new Person500DepositPredicate();
     }
-
-
+    
+    public IPredicate getWithdrawPredicate() {
+        return new NegativeBalancePredicate();
+    }
 }

@@ -12,6 +12,7 @@ import View.Group7.Bank.Type.MyAccountType;
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.controller.AccountController;
 import com.asd.group7.common.lib.factory.FactoryProducer;
+import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.UIManager;
@@ -25,6 +26,16 @@ public class Bank extends AccountFrm {
 
     static {
         FactoryProducer.addAbstractFactory(MyAccountType.MYAC, new MyAccountFactory());
+    }
+    
+    public static Bank bank;
+    
+    public static Bank getInstance() {
+        if(bank==null) {
+            bank = new Bank();
+            ClassicSingleton.setAccountFrm(bank);
+        }
+        return bank;
     }
 
     public Bank() {
@@ -42,11 +53,7 @@ public class Bank extends AccountFrm {
         JButton_PerAC.addActionListener(new AddPersonController());
     }
 
-    @Override
-    public void loadTableWithData() {
-        DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        model.addRow(rowdata);
-    }
+   
 
     static public void main(String args[]) {
         try {
@@ -59,7 +66,8 @@ public class Bank extends AccountFrm {
             }
 
             //Create a new instance of our application's frame, and make it visible.
-            (new Bank()).setVisible(true);
+            //(new Bank()).setVisible(true);
+            Bank.getInstance().setVisible(true);
         } catch (Throwable t) {
             t.printStackTrace();
             //Ensure the application exits with an error condition.

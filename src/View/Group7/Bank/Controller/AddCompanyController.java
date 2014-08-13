@@ -16,9 +16,10 @@ import com.asd.group7.common.app.type.Types;
 import com.asd.group7.common.gui.AccountFrm;
 import com.asd.group7.common.gui.JDialog_AddAccount;
 import com.asd.group7.common.gui.controller.AccountController;
+import com.asd.group7.common.lib.account.AAccount;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.factory.FactoryProducer;
-import com.asd.group7.common.lib.party.Company;
+import com.asd.group7.common.app.party.Company;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
@@ -45,6 +46,10 @@ public class AddCompanyController extends AccountController{
     public void createAccount(MyAccountType accountType,String name,String ct,String st,String str,String zip
             ,String acnr,String noe,String em){
         IAccount account=FactoryProducer.getFactory(MyAccountType.MYAC).getAccount(accountType);
+        AAccount aAccount = (AAccount)account;
+        aAccount.setAcctNumber(acnr);
+        
+        account = aAccount;
         IParty party=FactoryProducer.getFactory(Types.PARTY).getParty(PartyType.COMPANY);
         Company c=(Company)party;
         c.setName(name);

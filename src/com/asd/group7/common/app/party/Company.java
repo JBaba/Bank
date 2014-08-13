@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.asd.group7.common.lib.party;
+package com.asd.group7.common.app.party;
 
-import com.asd.group7.common.app.functors.CompanyEmailSendFunctor;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.functor.IFunctor;
+import com.asd.group7.common.lib.party.AParty;
+import com.asd.group7.common.lib.party.ICompany;
 import com.asd.group7.common.lib.predicate.IPredicate;
 import java.util.List;
+import javax.sql.rowset.Predicate;
 
 /**
  *
@@ -49,9 +51,16 @@ public class Company extends AParty implements ICompany {
     }
 
     @Override
-    public void sendEmail(double amount) {
-        this.functor = new CompanyEmailSendFunctor();       
-                functor.compute();  
+    public void sendEmail(IFunctor f, IPredicate p, double amount) {
+        if(p!=null) {
+            if(p.check(amount)) {
+                if(f!=null) {
+                    f.compute(this);
+                }
+            }
+        } else {
+            f.compute(this);
+        }
     }
 
     @Override
@@ -59,11 +68,11 @@ public class Company extends AParty implements ICompany {
         return type;
     }
 
-    @Override
-    public void sendNegativeBalanceEmail() {
-        
+    public IPredicate getDepositPredicate() {
+        return null;
     }
-
-
     
+    public IPredicate getWithdrawPredicate() {
+        return null;
+    }
 }

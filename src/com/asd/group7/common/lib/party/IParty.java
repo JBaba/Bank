@@ -19,13 +19,17 @@ public interface IParty {
 
     public void removeAccount(IAccount account);
 
-    public void sendEmail(double amount);
-    
-    public void sendNegativeBalanceEmail();
+    public void sendEmail(IFunctor f, IPredicate p, double amount);
 
     public String getType();
     
     public String getName();
 
     public void setName(String name);
+    
+    public IPredicate getDepositPredicate();
+    
+    public IPredicate getWithdrawPredicate();
+    
+    public double getBalance();
 }
