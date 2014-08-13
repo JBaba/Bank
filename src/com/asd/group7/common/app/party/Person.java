@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class Person extends AParty implements IPerson {
 
-    private Date dateOfBirth;
+    private Date dateOfBirth=new Date("08/08/2012");
     private final String type = "P";
 
     public Date getDateOfBirth() {

@@ -52,7 +52,11 @@ public class AddPersonController extends AccountController {
         c.setState(st);
         c.setStreet(str);
         c.setZip(zip);
-        c.setDateOfBirth(new Date(bd));
+        try{
+            c.setDateOfBirth(new Date(bd));
+        }catch(IllegalArgumentException e){
+            System.err.println("IllegalArgumentException in setDateOfBirth");
+        }
         c.setEmail(em);
         party = c;
         party.addAccount(account);

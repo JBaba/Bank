@@ -14,9 +14,15 @@ import com.asd.group7.common.lib.party.IParty;
  */
 public class CheckingAccount extends AAccount {
 
+    public CheckingAccount() {
+        super.setType("Ch");
+    }
+
+    
+    
     @Override
     public String getType() {
-        return "C";
+        return "Ch";
     }
 
     @Override
@@ -33,4 +39,8 @@ public class CheckingAccount extends AAccount {
     public IParty getParty() {
         return super.getParty();
     }
+    
+//    public double getBalance() {
+//        return super.getBalance();
+//    }
 }

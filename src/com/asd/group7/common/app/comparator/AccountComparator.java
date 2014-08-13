@@ -22,17 +22,18 @@ public class AccountComparator implements Comparator<AAccount> {
     String methodName;
 
     public AccountComparator(String fieldName) throws Exception {
-        boolean match = false;
-        for (Field f : AAccount.class.getDeclaredFields()) {
-            if (f.getName().equalsIgnoreCase(fieldName)) {
-                match = true;
+//        boolean match = false;
+//        for (Field f : AAccount.class.getDeclaredFields()) {
+//            if (f.getName().equalsIgnoreCase(fieldName)) {
+//                match = true;
                 this.fieldName = fieldName;
                 this.methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-            }
-        }
-        if (match == false) {
-            throw new Exception();
-        }
+//            }
+//        }
+//        match=true;
+//        if (match == false) {
+//            throw new Exception();
+//        }
     }
 
     @Override

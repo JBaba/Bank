@@ -31,4 +31,6 @@ public interface IAccount {
     public IParty getParty();
 
     public StringBuilder generateReport();
+    
+    public double getBalance();
 }

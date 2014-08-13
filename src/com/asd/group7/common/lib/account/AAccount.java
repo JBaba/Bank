@@ -5,6 +5,7 @@
  */
 package com.asd.group7.common.lib.account;
 
+import com.asd.group7.common.lib.party.AParty;
 import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.party.IParty;
 import com.asd.group7.common.lib.transaction.ITransaction;
@@ -18,10 +19,20 @@ import java.util.List;
  */
 public abstract class AAccount implements IAccount {
 
+    @Override
+    public String getType() {
+        return this.type;
+    }
+
     private String acctNumber;
     private List<ITransaction> transactions;
     private double balance;
     private IParty iParty;
+    private String type;
+
+    public void setType(String type) {
+        this.type = type;
+    }
     IPredicate<Double> negativeBalanceNotifierPredicate;
 
     public String getAcctNumber() {
@@ -87,4 +98,20 @@ public abstract class AAccount implements IAccount {
         return "AAccount{" + "acctNumber=" + acctNumber + ", balance=" + balance + '}';
     }
 
+    @Override
+    public double getBalance() {
+        return this.balance;
+    }
+    
+    public String getName(){
+        return iParty.getName();
+    }
+    
+    public String getCity(){
+        return ((AParty)iParty).getCity();
+    }
+    
+    public String getPartyType(){
+        return iParty.getType();
+    }
 }

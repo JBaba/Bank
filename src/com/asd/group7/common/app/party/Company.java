@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Company extends AParty implements ICompany {
 
-    private int noOfEmployee;
+    private int noOfEmployee=1;
     private final String type = "C";
     private List<Person> personList;
     private IFunctor functor;

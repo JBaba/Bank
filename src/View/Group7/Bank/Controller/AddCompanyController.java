@@ -52,7 +52,12 @@ public class AddCompanyController extends AccountController{
         c.setState(st);
         c.setStreet(str);
         c.setZip(zip);
-        c.setNoOfEmployee(Integer.parseInt(noe));
+        try{
+            c.setNoOfEmployee(Integer.parseInt(noe));
+        }catch(NumberFormatException e){
+            System.err.println("Number formate in noofemplyee");
+            c.setNoOfEmployee(1);
+        }
         c.setEmail(em);
         party=c;
         party.addAccount(account);

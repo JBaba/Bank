@@ -26,6 +26,8 @@ import com.asd.group7.common.lib.mediator.Message;
 import com.asd.group7.common.lib.party.AParty;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,6 +59,7 @@ public class AccountFrm extends ASDFrame {
     protected Object rowdata[];
 
     private Mediator mediator;
+    protected String selectedColumn = "acctNumber";
 
     public AccountFrm() {
 
@@ -144,6 +147,36 @@ public class AccountFrm extends ASDFrame {
             }
         });
 
+        table1.getTableHeader().addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent me) {
+//                Column index selected 0 AccountNr
+//                Column index selected 1 Name
+//                Column index selected 2 City
+//                Column index selected 3 P/C
+//                Column index selected 4 Ch/S
+//                Column index selected 5 Amount
+                int col = table1.columnAtPoint(me.getPoint());
+                if (col == 0) {
+                    selectedColumn = "acctNumber";
+                }else if (col == 1) {
+                    selectedColumn = "name";
+                }else if (col == 2) {
+                    selectedColumn = "city";
+                }else if (col == 3) {
+                    selectedColumn = "partyType";
+                } else if (col == 4) {
+                    selectedColumn = "type";
+                } else if (col == 5) {
+                    selectedColumn = "balance";
+                }
+                loadTableWithData();
+                String name = table1.getColumnName(col);
+                System.out.println("Column index selected " + col + " " + name);
+            }
+
+        });
     }
 
     /**
@@ -168,7 +201,7 @@ public class AccountFrm extends ASDFrame {
         try {
             model.setRowCount(0);
             AccountManager accountManager = ClassicSingleton.getInstanceAccountManager();
-            for (Iterator<AAccount> it = accountManager.getAccountList().getSortedIterator(new AccountComparator("acctNumber")); it.hasNext();) {
+            for (Iterator<AAccount> it = accountManager.getAccountList().getSortedIterator(new AccountComparator(selectedColumn)); it.hasNext();) {
                 IAccount iAccount = it.next();
                 rowdata = new Object[8];
                 rowdata[0] = iAccount.getAcctNumber();

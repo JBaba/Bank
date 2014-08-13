@@ -14,6 +14,12 @@ import com.asd.group7.common.lib.party.IParty;
  */
 public class SavingAccount extends AAccount {
 
+    public SavingAccount() {
+        super.setType("S");
+    }
+
+    
+    
     @Override
     public String getType() {
         return "S";
@@ -32,5 +38,9 @@ public class SavingAccount extends AAccount {
     @Override
     public IParty getParty() {
         return super.getParty();
+    }
+    
+    public double getBalance() {
+        return super.getBalance();
     }
 }
