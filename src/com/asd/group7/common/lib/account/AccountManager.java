@@ -69,6 +69,8 @@ public class AccountManager implements ISenderColleague {
         this.updateAccountTable();
     }
 
+    /*This transaction is called from command Class, 
+    This records transaction and performs necessary actions on account */
     public void addTransactionToAccount(IAccount account, ITransaction transaction) {
         account.addEntry(transaction);
         account.updateAmountByTransaction(transaction);
