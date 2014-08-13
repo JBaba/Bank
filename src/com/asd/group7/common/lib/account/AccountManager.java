@@ -80,7 +80,7 @@ public class AccountManager implements ISenderColleague {
     public IAccount getAccountById(String accountId) {
         for (Iterator<IAccount> it = accountList.iterator(); it.hasNext();) {
             IAccount iAccount = it.next();
-            if (iAccount.getAccountNumber().equalsIgnoreCase(accountId)) {
+            if (iAccount.getAcctNumber().equalsIgnoreCase(accountId)) {
                 return iAccount;
             }
         }

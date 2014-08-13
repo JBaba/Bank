@@ -58,11 +58,6 @@ public abstract class AAccount implements IAccount {
         if(p.check(this.getCurrentBalance()))
             f.compute();
     }
-
-    @Override
-    public String getAccountNumber() {
-        return this.acctNumber;
-    }
     
     public void updateAmountByTransaction(ITransaction transaction){
         this.balance += transaction.getSignedAmount();

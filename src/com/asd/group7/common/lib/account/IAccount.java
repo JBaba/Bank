@@ -24,13 +24,13 @@ public interface IAccount {
 
     public String getType();
 
-    public String getAccountNumber();
-
     public double getInterestAmount();
     
     public void updateAmountByTransaction(ITransaction transaction);
 
     public void setParty(IParty iParty);
+    
+    public String getAcctNumber();
     
     public IParty getParty();
     
