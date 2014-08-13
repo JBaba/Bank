@@ -8,6 +8,8 @@ package com.asd.group7.common.gui.controller;
 import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,8 +26,12 @@ public class InterestController implements Controller {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        accountManager.addInterest();
-        JOptionPane.showMessageDialog(ClassicSingleton.getInstanceAccountFrm(), "Add interest to all accounts", "Add interest to all accounts", JOptionPane.WARNING_MESSAGE);
+        try {
+            accountManager.addInterest();
+            JOptionPane.showMessageDialog(ClassicSingleton.getInstanceAccountFrm(), "Add interest to all accounts", "Add interest to all accounts", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            Logger.getLogger(InterestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

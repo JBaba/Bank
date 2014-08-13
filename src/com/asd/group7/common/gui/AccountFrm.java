@@ -1,5 +1,6 @@
 package com.asd.group7.common.gui;
 
+import com.asd.group7.common.app.comparator.AccountComparator;
 import com.asd.group7.common.gui.components.asd.ASDFrame;
 import com.asd.group7.common.gui.components.asd.ASDPanel;
 import com.asd.group7.common.gui.components.asd.ASDScrollPane;
@@ -16,6 +17,7 @@ import com.asd.group7.common.gui.controller.DepositController;
 import com.asd.group7.common.gui.controller.ExitController;
 import com.asd.group7.common.gui.controller.InterestController;
 import com.asd.group7.common.gui.controller.WithdrawController;
+import com.asd.group7.common.lib.account.AAccount;
 import com.asd.group7.common.lib.account.AccountManager;
 import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.factory.FactoryProducer;
@@ -25,6 +27,8 @@ import com.asd.group7.common.lib.party.AParty;
 import com.asd.group7.common.singleton.ClassicSingleton;
 import java.awt.*;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -161,21 +165,25 @@ public class AccountFrm extends ASDFrame {
     }
 
     public void loadTableWithData() {
-        model.setRowCount(0);
-        AccountManager accountManager = ClassicSingleton.getInstanceAccountManager();
-        for (Iterator<IAccount> it = accountManager.getAccountList().iterator(); it.hasNext();) {
-            IAccount iAccount = it.next();
-            rowdata = new Object[8];
-            rowdata[0] = iAccount.getAcctNumber();
-            AParty aParty = (AParty) iAccount.getParty();
-            rowdata[1] = aParty.getName();
-            rowdata[2] = aParty.getCity();
-            rowdata[3] = aParty.getType();
-            rowdata[4] = iAccount.getType();
-            rowdata[5] = iAccount.getCurrentBalance();
-            model.addRow(rowdata);
+        try {
+            model.setRowCount(0);
+            AccountManager accountManager = ClassicSingleton.getInstanceAccountManager();
+            for (Iterator<AAccount> it = accountManager.getAccountList().getSortedIterator(new AccountComparator("acctNumber")); it.hasNext();) {
+                IAccount iAccount = it.next();
+                rowdata = new Object[8];
+                rowdata[0] = iAccount.getAcctNumber();
+                AParty aParty = (AParty) iAccount.getParty();
+                rowdata[1] = aParty.getName();
+                rowdata[2] = aParty.getCity();
+                rowdata[3] = aParty.getType();
+                rowdata[4] = iAccount.getType();
+                rowdata[5] = iAccount.getCurrentBalance();
+                model.addRow(rowdata);
+            }
+            model.send(new Message(accountManager.ACCOUNT_SELECTED, false));
+        } catch (Exception ex) {
+            Logger.getLogger(AccountFrm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        model.send(new Message(accountManager.ACCOUNT_SELECTED, false));
     }
 
     public String getAccountNo() {

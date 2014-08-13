@@ -8,6 +8,7 @@ package com.asd.group7.common.lib.account;
 import com.asd.group7.common.app.transaction.Deposit;
 import com.asd.group7.common.app.type.TransactionType;
 import com.asd.group7.common.app.type.Types;
+import com.asd.group7.common.lib.ASDArrayList;
 import com.asd.group7.common.lib.factory.FactoryProducer;
 import com.asd.group7.common.lib.functor.IFunctor;
 import com.asd.group7.common.lib.mediator.ISenderColleague;
@@ -17,9 +18,7 @@ import com.asd.group7.common.lib.predicate.IPredicate;
 import com.asd.group7.common.lib.transaction.ITransaction;
 import com.asd.group7.common.lib.transaction.TransactionManager;
 import com.asd.group7.common.singleton.ClassicSingleton;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  *
@@ -32,7 +31,7 @@ public class AccountManager implements ISenderColleague {
     public static final String ACCOUNT_LIST_NOT_EMPTY = "ACCOUNT_LIST_NOT_EMPTY";
     public static final String UPDATE_ACCOUNT_TABLE = "UPDATE_ACCOUNT_TABLE";
 
-    private List<IAccount> accountList = new ArrayList<IAccount>();
+    private ASDArrayList<AAccount> accountList = new ASDArrayList<AAccount>();
     private TransactionManager transactionManager = null;
     private Mediator mediator;
 
@@ -44,7 +43,8 @@ public class AccountManager implements ISenderColleague {
     }
 
     public void addInterest() {
-        for (IAccount account : this.getAccountList()) {
+        for (Iterator<AAccount> it = accountList.iterator(); it.hasNext();) {
+            AAccount account = it.next();
             double interestAmount = account.getInterestAmount();
             ITransaction deposit = FactoryProducer.getFactory(Types.TRANSACTION).getTransaction(TransactionType.DEPOSIT);
             deposit.setupTransaction(this, account);
@@ -55,13 +55,13 @@ public class AccountManager implements ISenderColleague {
         this.updateAccountTable();
     }
 
-    public void removeAccount(IAccount account) {
+    public void removeAccount(AAccount account) {
         this.getAccountList().remove(account);
         this.send(new Message(ACCOUNT_LIST_NOT_EMPTY, this.getAccountList().size() > 0));
         this.updateAccountTable();
     }
 
-    public List<IAccount> getAccountList() {
+    public ASDArrayList<AAccount> getAccountList() {
         return accountList;
     }
 
