@@ -168,7 +168,7 @@ public class AccountFrm extends ASDFrame {
         for (Iterator<IAccount> it = accountManager.getAccountList().iterator(); it.hasNext();) {
             IAccount iAccount = it.next();
             rowdata = new Object[8];
-            rowdata[0] = iAccount.getAccountNumber();
+            rowdata[0] = iAccount.getAcctNumber();
             AParty aParty = (AParty) iAccount.getParty();
             rowdata[1] = aParty.getName();
             rowdata[2] = aParty.getCity();
