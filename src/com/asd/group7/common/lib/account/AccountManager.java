@@ -126,4 +126,13 @@ public class AccountManager implements ISenderColleague {
     public void updateAccountTable() {
         this.send(new Message(UPDATE_ACCOUNT_TABLE, true));
     }
+    
+    public StringBuilder generateReport() {
+        StringBuilder myBuilder=new StringBuilder();
+        for (Iterator<IAccount> it = accountList.iterator(); it.hasNext();) {
+            IAccount iAccount = it.next();
+            myBuilder.append("\n"+iAccount.generateReport().toString());
+        }
+        return myBuilder;
+    }
 }
