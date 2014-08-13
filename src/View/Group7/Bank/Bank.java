@@ -7,6 +7,8 @@ package View.Group7.Bank;
 
 import View.Group7.Bank.Controller.AddCompanyController;
 import View.Group7.Bank.Controller.AddPersonController;
+import View.Group7.Bank.Controller.DepositController;
+import View.Group7.Bank.Controller.WithdrawController;
 import View.Group7.Bank.Factory.MyAccountFactory;
 import View.Group7.Bank.Type.MyAccountType;
 import com.asd.group7.common.gui.AccountFrm;
@@ -48,9 +50,18 @@ public class Bank extends AccountFrm {
         for (ActionListener al : JButton_CompAC.getActionListeners()) {
             JButton_CompAC.removeActionListener(al);
         }
+        for (ActionListener al : JButton_Deposit.getActionListeners()) {
+            JButton_Deposit.removeActionListener(al);
+        }
+        for (ActionListener al : JButton_Withdraw.getActionListeners()) {
+            JButton_Withdraw.removeActionListener(al);
+        }
+        
 
         JButton_CompAC.addActionListener(new AddCompanyController());
         JButton_PerAC.addActionListener(new AddPersonController());
+        JButton_Deposit.addActionListener(new DepositController());
+        JButton_Withdraw.addActionListener(new WithdrawController());
     }
 
    

@@ -6,7 +6,6 @@
 
 package com.asd.group7.common.app.predicates;
 
-import com.asd.group7.common.lib.account.IAccount;
 import com.asd.group7.common.lib.predicate.IPredicate;
 
 /**

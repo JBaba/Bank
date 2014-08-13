@@ -85,9 +85,9 @@ public class JDialog_Dialogview extends javax.swing.JDialog {
     }
 
     protected void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-        parentframe.amountDeposit = JTextField_Deposit.getText();
-        String amount=JTextField_Deposit.getText();
-        dispose();
+//        parentframe.amountDeposit = JTextField_Deposit.getText();
+//        String amount=JTextField_Deposit.getText();
+//        dispose();
     }
 
     protected void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {

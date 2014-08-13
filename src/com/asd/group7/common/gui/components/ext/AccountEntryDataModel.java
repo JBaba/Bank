@@ -24,10 +24,6 @@ public class AccountEntryDataModel extends ASDEntryDataModel implements ISenderC
         this.mediator = mediator;
     }
 
-    public AccountEntryDataModel() {
-        
-    }
-
     @Override
     public void send(Message message) {
         mediator.send(this, message);

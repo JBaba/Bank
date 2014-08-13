@@ -75,7 +75,7 @@ public class AccountFrm extends ASDFrame {
          /Deposit, Withdraw and Exit from the system
          */
         scrollPane1 = new ASDScrollPane();
-        model = setTableModel();
+        model = setTableModel(mediator);
         table1 = new AccountListTable(model);
         //model=table1
         rowdata = new Object[8];
@@ -147,9 +147,9 @@ public class AccountFrm extends ASDFrame {
      *
      * @return
      */
-    protected AccountEntryDataModel setTableModel() {
+    protected AccountEntryDataModel setTableModel(Mediator mediator) {
 
-        AccountEntryDataModel model = new AccountEntryDataModel();
+        AccountEntryDataModel model = new AccountEntryDataModel(mediator);
         model.addColumn("AccountNr");
         model.addColumn("Name");
         model.addColumn("City");
@@ -175,8 +175,7 @@ public class AccountFrm extends ASDFrame {
             rowdata[5] = iAccount.getCurrentBalance();
             model.addRow(rowdata);
         }
-        
-
+        model.send(new Message(accountManager.ACCOUNT_SELECTED, false));
     }
 
     public String getAccountNo() {
