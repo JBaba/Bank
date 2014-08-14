@@ -9,15 +9,15 @@ import com.asd.group7.common.lib.account.AAccount;
 
 /**
  *
- * @author naimi
+ * @author dhruba
  */
-public class Bronze extends CreditCardAccount {
+public class Silver extends CreditCardAccount {
 
-    public double mi=0.10,mp=0.14;   
+    public double mi=0.08,mp=0.12;   
     
     @Override
     public String getType() {
-        return "Bronze";
+        return "Silver";
     }
 
     @Override

@@ -82,13 +82,13 @@ public abstract class AAccount implements IAccount {
     public StringBuilder generateReport() {
 
         StringBuilder myBuilder = new StringBuilder();
-        myBuilder.append("------------- Account No: " + acctNumber + " -------------");
-        myBuilder.append(iParty.toString() + "\n");
+        myBuilder.append("\n------------- Account No: " + acctNumber + " -------------");
+        myBuilder.append("\n"+iParty.toString() + "\n");
         myBuilder.append(this.toString() + "\n");
-        myBuilder.append("------------- Transaction Report ---------------------");
+        myBuilder.append("------------- Transaction Report ---------------------\n");
         for (Iterator<ITransaction> it = transactions.iterator(); it.hasNext();) {
             ITransaction iTransaction = it.next();
-            myBuilder.append(iTransaction.toString());
+            myBuilder.append(iTransaction.toString()+"\n");
         }
         return myBuilder;
     }
