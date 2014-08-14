@@ -83,12 +83,16 @@ public abstract class AAccount implements IAccount {
 
         StringBuilder myBuilder = new StringBuilder();
         myBuilder.append("\n------------- Account No: " + acctNumber + " -------------");
-        myBuilder.append("\n"+iParty.toString() + "\n");
+        myBuilder.append("\n" + iParty.toString() + "\n");
         myBuilder.append(this.toString() + "\n");
         myBuilder.append("------------- Transaction Report ---------------------\n");
-        for (Iterator<ITransaction> it = transactions.iterator(); it.hasNext();) {
-            ITransaction iTransaction = it.next();
-            myBuilder.append(iTransaction.toString()+"\n");
+        try {
+            for (Iterator<ITransaction> it = transactions.iterator(); it.hasNext();) {
+                ITransaction iTransaction = it.next();
+                myBuilder.append(iTransaction.toString() + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return myBuilder;
     }
@@ -102,16 +106,16 @@ public abstract class AAccount implements IAccount {
     public double getBalance() {
         return this.balance;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return iParty.getName();
     }
-    
-    public String getCity(){
-        return ((AParty)iParty).getCity();
+
+    public String getCity() {
+        return ((AParty) iParty).getCity();
     }
-    
-    public String getPartyType(){
+
+    public String getPartyType() {
         return iParty.getType();
     }
 }
